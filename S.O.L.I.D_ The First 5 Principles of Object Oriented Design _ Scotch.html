@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<!-- saved from url=(0088)https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design -->
+<html itemscope="" itemtype="https://schema.org/" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<!--
+	                                 /$$               /$$
+	                                | $$              | $$
+	  /$$$$$$$  /$$$$$$$  /$$$$$$  /$$$$$$    /$$$$$$$| $$$$$$$  /$$   /$$
+	 /$$_____/ /$$_____/ /$$__  $$|_  $$_/   /$$_____/| $$__  $$| $$  | $$
+	|  $$$$$$ | $$      | $$  \ $$  | $$    | $$      | $$  \ $$| $$  | $$
+	 \____  $$| $$      | $$  | $$  | $$ /$$| $$      | $$  | $$| $$  | $$
+	 /$$$$$$$/|  $$$$$$$|  $$$$$$/  |  $$$$/|  $$$$$$$| $$  | $$|  $$$$$$$
+	|_______/  \_______/ \______/    \___/   \_______/|__/  |__/ \____  $$
+	                                                             /$$  | $$
+	                                                            |  $$$$$$/
+	                                                             \______/
+	                                 /$$               /$$
+	                                | $$              | $$
+	  /$$$$$$$  /$$$$$$$  /$$$$$$  /$$$$$$    /$$$$$$$| $$$$$$$
+	 /$$_____/ /$$_____/ /$$__  $$|_  $$_/   /$$_____/| $$__  $$
+	|  $$$$$$ | $$      | $$  \ $$  | $$    | $$      | $$  \ $$
+	 \____  $$| $$      | $$  | $$  | $$ /$$| $$      | $$  | $$
+	 /$$$$$$$/|  $$$$$$$|  $$$$$$/  |  $$$$/|  $$$$$$$| $$  | $$
+	|_______/  \_______/ \______/    \___/   \_______/|__/  |__/
+
+
+
+	                                 /$$               /$$
+	                                | $$              | $$
+	  /$$$$$$$  /$$$$$$$  /$$$$$$  /$$$$$$    /$$$$$$$| $$$$$$$
+	 /$$_____/ /$$_____/ /$$__  $$|_  $$_/   /$$_____/| $$__  $$
+	|  $$$$$$ | $$      | $$  \ $$  | $$    | $$      | $$  \ $$
+	 \____  $$| $$      | $$  | $$  | $$ /$$| $$      | $$  | $$
+	 /$$$$$$$/|  $$$$$$$|  $$$$$$/  |  $$$$/|  $$$$$$$| $$  | $$
+	|_______/  \_______/ \______/    \___/   \_______/|__/  |__/
+	-->
+	<title>S.O.L.I.D: The First 5 Principles of Object Oriented Design | Scotch</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="google-site-verification" content="NoKkRtzSguNO3Xd1cuhpVkUoh7n8mz-aofV9Ch4aS8w">
+
+	<!-- RSS -->
+	<link rel="alternate" type="application/rss+xml" title="Scotch - Developers bringing fire to the people." href="https://scotch.io/feed">
+
+	<!-- ICONS/TILES/WHATEVER REALLY NEED A MORE UNIVERSAL STANDARD -->
+	<link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64" href="https://scotch.io/favicon.ico">
+	<link rel="apple-touch-icon" sizes="57x57" href="https://scotch.io/wp-content/themes/forty/img/icons/favicon-57.png">
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://scotch.io/wp-content/themes/forty/img/icons/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="https://scotch.io/wp-content/themes/forty/img/icons/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="https://scotch.io/wp-content/themes/forty/img/icons/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="https://scotch.io/wp-content/themes/forty/img/icons/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="https://scotch.io/wp-content/themes/forty/img/icons/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="https://scotch.io/wp-content/themes/forty/img/icons/favicon-152.png">
+	<meta name="application-name" content="Scotch Scotch scotch">
+	<meta name="msapplication-TileImage" content="https://scotch.io/wp-content/themes/forty/img/icons/favicon-144.png">
+	<meta name="msapplication-TileColor" content="#2A2A2A">
+
+	<!-- MUST PLEASE EVERYONE -->
+				
+		<!-- SEARCH ENGINES -->
+		<meta name="author" content="Samuel Oloruntoba">
+		<meta name="description" content="">
+		<link rel="canonical" href="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch.html">
+
+		<!-- THE TWITTER MACHINE -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@scotch_io">
+		<meta name="twitter:creator" content="kayandrae07">
+		<meta name="twitter:title" content="S.O.L.I.D: The First 5 Principles of Object Oriented Design">
+		<meta name="twitter:description" content="">
+		<meta name="twitter:image:src" content="https://cask.scotch.io/2015/03/solid-object-oriented-design.jpg">
+
+		<!-- FACESPACE -->
+		<meta property="fb:admins" content="579622216,709634581">
+		<meta property="fb:app_id" content="1389892087910588">
+		<meta property="og:url" content="https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design">
+		<meta property="og:type" content="article">
+		<meta property="og:title" content="S.O.L.I.D: The First 5 Principles of Object Oriented Design">
+		<meta property="og:image" content="https://cask.scotch.io/2015/03/solid-object-oriented-design.jpg">
+		<meta property="og:description" content="">
+		<meta property="og:site_name" content="Scotch">
+		<meta property="article:author" content="">
+		<meta property="article:publisher" content="https://www.facebook.com/scotchdevelopment">
+
+		<!-- G++ -->
+		<meta itemprop="name" content="S.O.L.I.D: The First 5 Principles of Object Oriented Design">
+		<meta itemprop="description" content="">
+		<meta itemprop="image" content="https://cask.scotch.io/2015/03/solid-object-oriented-design.jpg">
+
+		
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://scotch.io/wp-content/themes/forty/build/styles.min.css">
+
+	<!-- BEGIN UGLY WP HEAD FORMATTING -->
+	<link rel="stylesheet" id="bbp-default-css" href="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/bbpress.css" type="text/css" media="screen">
+
+			
+			
+<script async="" src="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/analytics.js"></script><script>
+	// GOOGLE ANALYTICS
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-36045075-1', 'auto');
+	ga('send', 'pageview');
+</script>
+<script async="" type="text/javascript" src="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/count.js"></script><script type="text/javascript" async="" src="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/adsbygoogle.js"></script><script type="text/javascript" async="" src="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/bsa.js"></script><script type="text/javascript" id="_bsap_js_8321ee0e3825ae084dc5408db80d21db" src="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/s_8321ee0e3825ae084dc5408db80d21db.js" async="async"></script><script type="text/javascript" id="_bsap_js_8321ee0e3825ae084dc5408db80d2d1b" src="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/s_8321ee0e3825ae084dc5408db80d2d1b.js" async="async"></script><script async="" src="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/count-data.js"></script><script type="text/javascript" src="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/pro.js" id="_bsap_premium_pro"></script><script type="text/javascript" id="_bsaPRO_js" src="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/saved_resource" async="async"></script><script async="" type="text/javascript" src="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/embed.js"></script></head>
+<body class="single single-post postid-7207 single-format-standard">
+	
+
+	<main id="site-main">
+	<div class="site-wrapper">
+	<div class="site-canvas">
+		
+	<div id="site-content">
+		<div class="overlay"></div>
+
+		<div id="mobile-menu">
+			<ul>
+				<li><a href="https://scotch.io/tutorials">Tutorials</a></li>
+				<li><a href="https://scotch.io/courses">Courses</a></li>
+				<li><a href="https://scotch.io/bar-talk">Bar Talk</a></li>
+			</ul>
+		</div>
+
+		<div id="tags-list">
+			<a href="https://scotch.io/tag/angular-js" class="topic-angular">
+				<span class="topic-img"></span>
+				<span class="topic-name">Angular</span>
+			</a>
+			<a href="https://scotch.io/tag/node-js" class="topic-node">
+				<span class="topic-img"></span>
+				<span class="topic-name">Node</span>
+			</a>
+			<a href="https://scotch.io/tag/laravel" class="topic-laravel">
+				<span class="topic-img"></span>
+				<span class="topic-name">Laravel</span>
+			</a>
+			<a href="https://scotch.io/tag/mean" class="topic-mean">
+				<span class="topic-img"></span>
+				<span class="topic-name">MEAN</span>
+			</a>
+			<a href="https://scotch.io/tag/css" class="topic-css">
+				<span class="topic-img"></span>
+				<span class="topic-name">CSS</span>
+			</a>
+			<a href="https://scotch.io/tag/bootstrap" class="topic-bootstrap">
+				<span class="topic-img"></span>
+				<span class="topic-name">Bootstrap</span>
+			</a>
+			<a href="https://scotch.io/tag/sublime-text" class="topic-sublime">
+				<span class="topic-img"></span>
+				<span class="topic-name">Sublime Text</span>
+			</a>
+			<a href="https://scotch.io/tag/vagrant" class="topic-vagrant">
+				<span class="topic-img"></span>
+				<span class="topic-name">Vagrant</span>
+			</a>
+		</div>
+
+		<div id="signup-dropdown">
+		<a href="https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design#" class="dropdown-close"><span class="icon ion-ios-close-outline"></span></a>
+		<div class="container">
+			<h3>Sign Up For Free</h3>
+			<div class="signup-why">
+				<div class="signup-reason">
+					<span class="icon ion-ios-bookmarks-outline"></span>
+					<h4>Save Your Favorite Articles</h4>
+				</div>
+				<div class="signup-reason">
+					<span class="icon ion-ios-help-outline"></span>
+					<h4>Get Help on the Forums <small>(coming soon)</small></h4>
+				</div>
+				<div class="signup-reason">
+					<span class="icon ion-ios-flower-outline"></span>
+					<h4>Join the Community</h4>
+				</div> 
+			</div>
+			<form id="register" class="signup-form" action="https://scotch.io/wp-admin/admin-ajax.php" method="POST">
+				<input type="hidden" id="signonsecurity" name="signonsecurity" value="b18ce7c50f"><input type="hidden" name="_wp_http_referer" value="/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design">				<input type="hidden" name="redirect_to" value="/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design?register=true">
+				<div class="signup-row">
+					<div class="form-group">
+						<input type="text" name="username" class="form-control" placeholder="Username">
+					</div>
+					<div class="form-group">
+						<input type="text" name="email" class="form-control" placeholder="Email">
+					</div>
+				</div>
+				<div class="signup-row">
+					<div class="form-group">
+						<input type="password" name="password" class="form-control" placeholder="Password">
+					</div>
+					<div class="form-group">
+						<input type="password" name="password_confirm" class="form-control" placeholder="Confirm Password">
+					</div>
+				</div>
+				<div class="signup-row">
+					<div class="form-group checkbox">
+						<label>
+							<input type="checkbox" name="newsletter_signup" checked=""> Sign Up for the Newsletter
+						</label>
+					</div>
+					<button type="submit" class="btn btn-danger">Sign Up</button>
+				</div>
+			</form>
+		</div>
+		<div class="alert alert-danger register-message"></div>
+		</div>
+
+		<div id="login-dropdown">
+		<a href="https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design#" class="dropdown-close"><span class="icon ion-ios-close-outline"></span></a>
+		<div class="container container-login">
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+				<div class="login-form-header">
+					<span class="icon ion-ios-sunny-outline"></span>
+					<h3>Login</h3>
+				</div>				
+				<form id="login" class="login-form" action="https://scotch.io/wp-admin/admin-ajax.php" method="POST">
+					<input type="hidden" id="security" name="security" value="c7aed49d0c"><input type="hidden" name="_wp_http_referer" value="/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design">					<input type="hidden" name="redirect_to" value="/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design">
+					<div class="form-group">
+						<input type="text" name="username" class="form-control" placeholder="Username">
+					</div>	
+					<div class="form-group">
+						<input type="password" name="password" class="form-control" placeholder="Password">
+					</div>	
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" name="rememberme" value="forever" checked="checked"> Remember Me
+						</label>
+					</div>
+					<button type="submit" class="btn btn-danger btn-lg btn-block">Login</button>
+					<p class="text-right"><a href="https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design#" class="forgot-password btn btn-link btn-sm">Forgot Your Password</a></p>
+				</form>
+				
+			</div>
+		</div>			
+		</div>
+		<div class="container container-forgot">
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+				<div class="login-form-header">
+					<span class="icon ion-ios-locked-outline"></span>
+					<h3>Forgot Password</h3>
+				</div>				
+				<form id="forgot" class="forgot-form" action="https://scotch.io/wp-admin/admin-ajax.php" method="POST">
+					<input type="hidden" id="forgotsecurity" name="forgotsecurity" value="c067c40dbf"><input type="hidden" name="_wp_http_referer" value="/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design">					<input type="hidden" name="redirect_to" value="/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design">
+					<div class="form-group">
+						<input type="text" name="user_login" class="form-control" placeholder="Username or Email">
+					</div>	
+					<button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
+				</form>
+			</div>
+		</div>			
+		</div>
+		<div class="alert alert-danger login-message"></div>
+		</div>
+
+<article class="single-article">
+
+	<div class="page-topper text-center">
+		<h1>
+						S.O.L.I.D: The First 5 Principles of Object Oriented Design		</h1>
+		<div class="byline">
+	<span class="byline-item byline-author">
+		<a href="https://scotch.io/author/samuel">
+			<img src="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/b83c303f62968b08e42a60bdb2924e6f">
+			Samuel 
+			Oloruntoba 
+							(</a><a href="https://twitter.com/kayandrae07">@kayandrae07</a>)
+					
+	</span>
+	<span class="byline-item">
+		<span class="icon ion-ios-calendar-outline"></span> March 18, 2015	</span>
+	
+		<span class="byline-item">
+		<span class="icon ion-ios-chatboxes-outline"></span> 
+		<a href="https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design#disqus_thread" class="disqus-comment-count" data-disqus-url="https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design">13</a>
+	</span>
+		<span class="byline-item">
+		<span class="icon ion-coffee"></span> <a href="https://scotch.io/category/bar-talk" rel="category tag">Bar Talk</a>	</span>
+		<span class="byline-item">
+		<span class="icon ion-ios-pricetags"></span> <a href="https://scotch.io/tag/ood" rel="tag">ood</a>, <a href="https://scotch.io/tag/php" rel="tag">php</a>, <a href="https://scotch.io/tag/solid" rel="tag">solid</a> 
+	</span>
+	</div>	</div>
+
+	<div class="page-hero clearfix">
+		
+	</div>	
+
+	<div class="page-main">
+		<div class="page-content">
+	
+			<!-- LEGEND -->
+			
+
+			<!-- PAGE CONTENT -->
+			<div class="page-content-inside">
+				<div class="page-content-primary">
+
+										
+										
+					<div class="tile"><div class="tile-content"> <strong>S.O.L.I.D</strong> is an acronym for the <strong>first five object-oriented design(OOD) principles</strong> by Robert C. Martin, popularly known as <a href="http://en.wikipedia.org/wiki/Robert_Cecil_Martin">Uncle Bob</a>.<p></p>
+<p>These principles, when combined together, make it easy for a programmer to develop software that are easy to maintain and extend. They also make it easy for developers to avoid code smells, easily refactor code, and are also a part of the agile or adaptive software development.</p>
+<p><strong>Note</strong>: <em>this is just a simple “welcome to <strong>S.O.L.I.D</strong>” article, it simply sheds light on what <strong>S.O.L.I.D</strong> is</em>. </p></div></div>
+<div class="tile"><div class="tile-content"><p></p>
+<h3>S.O.L.I.D stands for:</h3>
+<p>When expanded the acronyms might seem complicated, but they are pretty simple to grasp.</p>
+<ul>
+<li><strong>S</strong> – Single-responsiblity principle</li>
+<li><strong>O</strong> – Open-closed principle</li>
+<li><strong>L</strong> – Liskov substitution principle</li>
+<li><strong>I</strong> – Interface segregation principle</li>
+<li><strong>D</strong> – Dependency Inversion Principle </li>
+</ul>
+<p>Let’s look at each principle individually to understand why S.O.L.I.D can help make us better developers.</p>
+<p></p></div></div>
+<div class="tile"><div class="tile-content">
+<h2 id="single-responsibility-principle"><a href="https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design#single-responsibility-principle"><span class="heading-link icon ion-link"></span> Single-responsibility Principle</a></h2>
+<p><strong>S.R.P</strong> for short – this principle states that:</p>
+<blockquote>
+<p>A class should have one and only one reason to change, meaning that a class should have only one job.</p>
+</blockquote>
+<p>For example, say we have some shapes and we wanted to sum all the areas of the shapes. Well this is pretty simple right?</p>
+<pre class=" language-php"><code class=" language-php"><span class="token keyword keyword-class">class</span> <span class="token class-name">Circle</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token variable">$radius</span><span class="token punctuation">;</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">__construct<span class="token punctuation">(</span></span><span class="token variable">$radius</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">radius</span> <span class="token operator">=</span> <span class="token variable">$radius</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">Square</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token variable">$length</span><span class="token punctuation">;</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">__construct<span class="token punctuation">(</span></span><span class="token variable">$length</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">length</span> <span class="token operator">=</span> <span class="token variable">$length</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>First, we create our shapes classes and have the constructors setup the required parameters. Next, we move on by creating the <strong>AreaCalculator</strong> class and then write up our logic to sum up the areas of all provided shapes.</p>
+<pre class=" language-php"><code class=" language-php"><span class="token keyword keyword-class">class</span> <span class="token class-name">AreaCalculator</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword keyword-protected">protected</span> <span class="token variable">$shapes</span><span class="token punctuation">;</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">__construct<span class="token punctuation">(</span></span><span class="token variable">$shapes</span> <span class="token operator">=</span> <span class="token keyword keyword-array">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">shapes</span> <span class="token operator">=</span> <span class="token variable">$shapes</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">sum<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token comment" spellcheck="true"> // logic to sum the areas
+</span>    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">output<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-return">return</span> <span class="token function">implode<span class="token punctuation">(</span></span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token keyword keyword-array">array</span><span class="token punctuation">(</span>
+            "<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span></span>"<span class="token punctuation">,</span>
+                <span class="token string">"Sum of the areas of provided shapes: "</span><span class="token punctuation">,</span>
+                <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">sum<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            "<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span></span>"
+        <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>To use the <strong>AreaCalculator</strong> class, we simply instantiate the class and pass in an array of shapes, and display the output at the bottom of the page.</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$shapes</span> <span class="token operator">=</span> <span class="token keyword keyword-array">array</span><span class="token punctuation">(</span>
+    <span class="token keyword keyword-new">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword keyword-new">new</span> <span class="token class-name">Square</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword keyword-new">new</span> <span class="token class-name">Square</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$areas</span> <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">AreaCalculator</span><span class="token punctuation">(</span><span class="token variable">$shapes</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-echo">echo</span> <span class="token variable">$areas</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">output<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>The problem with the output method is that the <strong>AreaCalculator</strong> handles the logic to output the data. Therefore, what if the user wanted to output the data as json or something else?</p>
+<p>All of that logic would be handled by the <strong>AreaCalculator</strong> class, this is what SRP frowns against; the <strong>AreaCalculator</strong> class should only sum the areas of provided shapes, it should not care whether the user wants json or HTML.</p>
+<p>So, to fix this you can create an <strong>SumCalculatorOutputter</strong> class and use this to handle whatever logic you need to handle how the sum areas of all provided shapes are displayed.</p>
+<p>The <strong>SumCalculatorOutputter</strong> class would work like this:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$shapes</span> <span class="token operator">=</span> <span class="token keyword keyword-array">array</span><span class="token punctuation">(</span>
+    <span class="token keyword keyword-new">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword keyword-new">new</span> <span class="token class-name">Square</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword keyword-new">new</span> <span class="token class-name">Square</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$areas</span> <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">AreaCalculator</span><span class="token punctuation">(</span><span class="token variable">$shapes</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$output</span> <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">SumCalculatorOutputter</span><span class="token punctuation">(</span><span class="token variable">$areas</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-echo">echo</span> <span class="token variable">$output</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">JSON<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-echo">echo</span> <span class="token variable">$output</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">HAML<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-echo">echo</span> <span class="token variable">$output</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">HTML<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-echo">echo</span> <span class="token variable">$output</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">JADE<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+</code></pre>
+<p>Now, whatever logic you need to output the data to the user is now handled by the <strong>SumCalculatorOutputter</strong> class. </p></div></div> <div class="tile"><div class="tile-content"><p></p>
+<h2 id="open-closed-principle"><a href="https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design#open-closed-principle"><span class="heading-link icon ion-link"></span> Open-closed Principle</a></h2>
+<blockquote>
+<p>Objects or entities should be open for extension, but closed for modification.</p>
+</blockquote>
+<p>This simply means that a class should be easily extendable without modifying the class itself. Let’s take a look at the <strong>AreaCalculator</strong> class, especially it’s <strong>sum</strong> method.</p>
+<pre class=" language-php"><code class=" language-php"><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">sum<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-foreach">foreach</span><span class="token punctuation">(</span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">shapes</span> <span class="token keyword keyword-as">as</span> <span class="token variable">$shape</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-if">if</span><span class="token punctuation">(</span><span class="token function">is_a<span class="token punctuation">(</span></span><span class="token variable">$shape</span><span class="token punctuation">,</span> <span class="token string">'Square'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$area</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">pow<span class="token punctuation">(</span></span><span class="token variable">$shape</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">length</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword keyword-else">else</span> <span class="token keyword keyword-if">if</span><span class="token punctuation">(</span><span class="token function">is_a<span class="token punctuation">(</span></span><span class="token variable">$shape</span><span class="token punctuation">,</span> <span class="token string">'Circle'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$area</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">pi<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token function">pow<span class="token punctuation">(</span></span><span class="token variable">$shape</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">radius</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-return">return</span> <span class="token function">array_sum<span class="token punctuation">(</span></span><span class="token variable">$area</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>   
+</code></pre>
+<p>If we wanted the <strong>sum</strong> method to be able to sum the areas of more shapes, we would have to add more <strong>if/else blocks</strong> and that goes against the Open-closed principle.</p>
+<p>A way we can make this <strong>sum</strong> method better is to remove the logic to calculate the area of each shape out of the sum method and attach it to the shape’s class.</p>
+<pre class=" language-php"><code class=" language-php"><span class="token keyword keyword-class">class</span> <span class="token class-name">Square</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token variable">$length</span><span class="token punctuation">;</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">__construct<span class="token punctuation">(</span></span><span class="token variable">$length</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">length</span> <span class="token operator">=</span> <span class="token variable">$length</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">area<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-return">return</span> <span class="token function">pow<span class="token punctuation">(</span></span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">length</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>   
+</code></pre>
+<p>The same thing should be done for the <strong>Circle</strong> class, an <strong>area</strong> method should be added. Now, to calculate the sum of any shape provided should be as simple as:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">sum<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-foreach">foreach</span><span class="token punctuation">(</span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">shapes</span> <span class="token keyword keyword-as">as</span> <span class="token variable">$shape</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token variable">$area</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$shape</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">area</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-return">return</span> <span class="token function">array_sum<span class="token punctuation">(</span></span><span class="token variable">$area</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Now we can create another shape class and pass it in when calculating the sum without breaking our code. However, now another problem arises, how do we know that the object passed into the <strong>AreaCalculator</strong> is actually a shape or if the shape has a method named <strong>area</strong>?</p>
+<p>Coding to an interface is an integral part of <strong>S.O.L.I.D</strong>, a quick example is we create an interface, that every shape implements:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token keyword keyword-interface">interface</span> <span class="token class-name">ShapeInterface</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">area<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">Circle</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">ShapeInterface</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token variable">$radius</span><span class="token punctuation">;</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">__construct<span class="token punctuation">(</span></span><span class="token variable">$radius</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">radius</span> <span class="token operator">=</span> <span class="token variable">$radius</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">area<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-return">return</span> <span class="token function">pi<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token function">pow<span class="token punctuation">(</span></span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">radius</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>  
+</code></pre>
+<p>In our <strong>AreaCalculator</strong> sum method we can check if the shapes provided are actually instances of the <strong>ShapeInterface</strong>, otherwise we throw an exception:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">sum<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-foreach">foreach</span><span class="token punctuation">(</span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">shapes</span> <span class="token keyword keyword-as">as</span> <span class="token variable">$shape</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-if">if</span><span class="token punctuation">(</span><span class="token function">is_a<span class="token punctuation">(</span></span><span class="token variable">$shape</span><span class="token punctuation">,</span> <span class="token string">'ShapeInterface'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$area</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$shape</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">area<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword keyword-continue">continue</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword keyword-throw">throw</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">AreaCalculatorInvalidShapeException</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-return">return</span> <span class="token function">array_sum<span class="token punctuation">(</span></span><span class="token variable">$area</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>    
+</code></pre>
+<p></p></div></div> <div class="tile"><div class="tile-content"><p></p>
+<h2 id="liskov-substitution-principle"><a href="https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design#liskov-substitution-principle"><span class="heading-link icon ion-link"></span> Liskov substitution principle</a></h2>
+<blockquote>
+<p>Let <strong>q(x)</strong> be a property provable about objects of <strong>x</strong> of type <strong>T</strong>. Then <strong>q(y)</strong> should be provable for objects <strong>y</strong> of type <strong>S</strong> where <strong>S</strong> is a subtype of <strong>T</strong>.</p>
+</blockquote>
+<p>All this is stating is that every subclass/derived class should be substitutable for their base/parent class.</p>
+<p>Still making use of out <strong>AreaCalculator</strong> class, say we have a <strong>VolumeCalculator</strong> class that extends the <strong>AreaCalculator</strong> class:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token keyword keyword-class">class</span> <span class="token class-name">VolumeCalculator</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">AreaCalulator</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">__construct<span class="token punctuation">(</span></span><span class="token variable">$shapes</span> <span class="token operator">=</span> <span class="token keyword keyword-array">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token scope"><span class="token keyword keyword-parent">parent</span><span class="token punctuation">::</span></span><span class="token function">__construct<span class="token punctuation">(</span></span><span class="token variable">$shapes</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">sum<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token comment" spellcheck="true"> // logic to calculate the volumes and then return and array of output
+</span>        <span class="token keyword keyword-return">return</span> <span class="token keyword keyword-array">array</span><span class="token punctuation">(</span><span class="token variable">$summedData</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>    
+</code></pre>
+<p>In the <strong>SumCalculatorOutputter</strong> class:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token keyword keyword-class">class</span> <span class="token class-name">SumCalculatorOutputter</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-protected">protected</span> <span class="token variable">$calculator</span><span class="token punctuation">;</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">__constructor<span class="token punctuation">(</span></span>AreaCalculator <span class="token variable">$calculator</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">calculator</span> <span class="token operator">=</span> <span class="token variable">$calculator</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">JSON<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token keyword keyword-array">array</span><span class="token punctuation">(</span>
+            <span class="token string">'sum'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">calculator</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">sum<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword keyword-return">return</span> <span class="token function">json_encode<span class="token punctuation">(</span></span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">HTML<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-return">return</span> <span class="token function">implode<span class="token punctuation">(</span></span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token keyword keyword-array">array</span><span class="token punctuation">(</span>
+            '<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span></span>'<span class="token punctuation">,</span>
+                <span class="token string">'Sum of the areas of provided shapes: '</span><span class="token punctuation">,</span>
+                <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">calculator</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">sum<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            '<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span></span>'
+        <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>    
+</code></pre>
+<p>If we tried to run an example like this:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$areas</span> <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">AreaCalculator</span><span class="token punctuation">(</span><span class="token variable">$shapes</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$volumes</span> <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">AreaCalculator</span><span class="token punctuation">(</span><span class="token variable">$solidShapes</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$output</span> <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">SumCalculatorOutputter</span><span class="token punctuation">(</span><span class="token variable">$areas</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$output2</span> <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">SumCalculatorOutputter</span><span class="token punctuation">(</span><span class="token variable">$volumes</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>The program does not squawk, but when we call the <strong>HTML</strong> method on the <strong>$output2</strong> object we get an <strong>E_NOTICE</strong> error informing us of an array to string conversion.</p>
+<p>To fix this, instead of returning an array from the <strong>VolumeCalculator</strong> class sum method, you should simply:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">sum<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment" spellcheck="true"> // logic to calculate the volumes and then return and array of output
+</span>    <span class="token keyword keyword-return">return</span> <span class="token variable">$summedData</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The summed data as a float, double or integer.</p>
+<p></p></div></div> <div class="tile"><div class="tile-content"><p></p>
+<h2 id="interface-segregation-principle"><a href="https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design#interface-segregation-principle"><span class="heading-link icon ion-link"></span> Interface segregation principle</a></h2>
+<blockquote>
+<p>A client should never be forced to implement an interface that it doesn’t use or clients shouldn’t be forced to depend on methods they do not use.</p>
+</blockquote>
+<p>Still using our shapes example, we know that we also have solid shapes, so since we would also want to calculate the volume of the shape, we can add another contract to the <strong>ShapeInterface</strong>:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token keyword keyword-interface">interface</span> <span class="token class-name">ShapeInterface</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">area<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">volume<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>   
+</code></pre>
+<p>Any shape we create must implement the <strong>volume</strong> method, but we know that squares are flat shapes and that they do not have volumes, so this interface would force the <strong>Square</strong> class to implement a method that it has no use of.</p>
+<p><strong>ISP</strong> says no to this, instead you could create another interface called <strong>SolidShapeInterface</strong> that has the <strong>volume</strong> contract and solid shapes like cubes e.t.c can implement this interface:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token keyword keyword-interface">interface</span> <span class="token class-name">ShapeInterface</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">area<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-interface">interface</span> <span class="token class-name">SolidShapeInterface</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">volume<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">Cuboid</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">ShapeInterface</span><span class="token punctuation">,</span> SolidShapeInterface <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">area<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token comment" spellcheck="true"> // calculate the surface area of the cuboid
+</span>    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">volume<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token comment" spellcheck="true"> // calculate the volume of the cuboid
+</span>    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+ </code></pre>
+<p>This is a much better approach, but a pitfall to watch out for is when type-hinting these interfaces, instead of using a <strong>ShapeInterface</strong> or a <strong>SolidShapeInterface</strong>.</p>
+<p>You can create another interface, maybe <strong>ManageShapeInterface</strong>, and implement it on both the flat and solid shapes, this way you can easily see that it has a single API for managing the shapes. For example:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token keyword keyword-interface">interface</span> <span class="token class-name">ManageShapeInterface</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">calculate<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">Square</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">ShapeInterface</span><span class="token punctuation">,</span> ManageShapeInterface <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">area<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/*Do stuff here*/</span> <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">calculate<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-return">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">area<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">Cuboid</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">ShapeInterface</span><span class="token punctuation">,</span> SolidShapeInterface<span class="token punctuation">,</span> ManageShapeInterface <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">area<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/*Do stuff here*/</span> <span class="token punctuation">}</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">volume<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/*Do stuff here*/</span> <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">calculate<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-return">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">area<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">volume<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>    
+</code></pre>
+<p>Now in <strong>AreaCalculator</strong> class, we can easily replace the call to the <strong>area</strong> method with <strong>calculate</strong> and also check if the object is an instance of the <strong>ManageShapeInterface</strong> and not the <strong>ShapeInterface</strong>. </p></div></div> <div class="tile"><div class="tile-content"><p></p>
+<h2 id="dependency-inversion-principle"><a href="https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design#dependency-inversion-principle"><span class="heading-link icon ion-link"></span> Dependency Inversion principle</a></h2>
+<p>The last, but definitely not the least states that:</p>
+<blockquote>
+<p>Entities must depend on abstractions not on concretions. It states that the high level module must not depend on the low level module, but they should depend on abstractions.</p>
+</blockquote>
+<p>This might sound bloated, but it is really easy to understand. This principle allows for decoupling, an example that seems like the best way to explain this principle:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token keyword keyword-class">class</span> <span class="token class-name">PasswordReminder</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-private">private</span> <span class="token variable">$dbConnection</span><span class="token punctuation">;</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">__construct<span class="token punctuation">(</span></span>MySQLConnection <span class="token variable">$dbConnection</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">dbConnection</span> <span class="token operator">=</span> <span class="token variable">$dbConnection</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>First the <strong>MySQLConnection</strong> is the low level module while the <strong>PasswordReminder</strong> is high level, but according to the definition of <strong>D</strong> in S.O.L.I.D. which states that <em>Depend on Abstraction not on concretions</em>, this snippet above violates this principle as the <strong>PasswordReminder</strong> class is being forced to depend on the <strong>MySQLConnection</strong> class.</p>
+<p>Later if you were to change the database engine, you would also have to edit the <strong>PasswordReminder</strong> class and thus violates <strong>Open-close principle</strong>.</p>
+<p>The <strong>PasswordReminder</strong> class should not care what database your application uses, to fix this again we “code to an interface”, since high level and low level modules should depend on abstraction, we can create an interface:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token keyword keyword-interface">interface</span> <span class="token class-name">DBConnectionInterface</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">connect<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>    
+</code></pre>
+<p>The interface has a connect method and the <strong>MySQLConnection</strong> class implements this interface, also instead of directly type-hinting <strong>MySQLConnection</strong> class in the constructor of the <strong>PasswordReminder</strong>, we instead type-hint the interface and no matter the type of database your application uses, the <strong>PasswordReminder</strong> class can easily connect to the database without any problems and <strong>OCP</strong> is not violated.</p>
+<pre class=" language-php"><code class=" language-php"><span class="token keyword keyword-class">class</span> <span class="token class-name">MySQLConnection</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">DBConnectionInterface</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">connect<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-return">return</span> <span class="token string">"Database connection"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">PasswordReminder</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-private">private</span> <span class="token variable">$dbConnection</span><span class="token punctuation">;</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-function">function</span> <span class="token function">__construct<span class="token punctuation">(</span></span>DBConnectionInterface <span class="token variable">$dbConnection</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">dbConnection</span> <span class="token operator">=</span> <span class="token variable">$dbConnection</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>  
+</code></pre>
+<p>According to the little snippet above, you can now see that both the high level and low level modules depend on abstraction.</p></div></div><p></p>
+<div class="tile"><div class="tile-content"><p></p>
+<h2 id="conclusion"><a href="https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design#conclusion"><span class="heading-link icon ion-link"></span> Conclusion</a></h2>
+<p>Honestly, <strong>S.O.L.I.D</strong> might seem to be a handful at first, but with continuous usage and adherence to its guidelines, it becomes a part of you and your code which can easily be extended, modified, tested, and refactored without any problems. </p></div></div>
+
+					
+					
+				</div>
+
+									<!-- PAGE SECONDARY -->
+					<div class="page-secondary">
+
+						<div class="yarpp-related">
+
+
+<div class="further-reading text-center secondary-box">
+	<h3>Read Next</h3>
+
+	<div class="row">
+			
+		<div class="col-sm-6">
+							<a href="https://scotch.io/tutorials/google-material-design-input-boxes-in-css3"><img width="600" height="250" src="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/google-material-design-input-boxes-css3.jpg" class="img-responsive wp-post-image" alt="google-material-design-input-boxes-css3"></a>
+			
+			<a href="https://scotch.io/tutorials/google-material-design-input-boxes-in-css3">Google Material Design Input Boxes in CSS3</a>
+		</div>		
+			
+		<div class="col-sm-6">
+							<a href="https://scotch.io/tutorials/make-material-design-websites-with-the-materialize-css-framework"><img width="600" height="250" src="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/getting-started-materialize-css-framework.png" class="img-responsive wp-post-image" alt="getting-started-materialize-css-framework"></a>
+			
+			<a href="https://scotch.io/tutorials/make-material-design-websites-with-the-materialize-css-framework">Make Material Design Websites with the Materialize CSS Framework</a>
+		</div>		
+		</div>
+
+</div>
+</div>
+
+						<div id="article-author" class="secondary-box clearfix">
+
+	<a href="https://scotch.io/author/samuel" class="author-image">
+		<img id="author-avatar" src="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/b83c303f62968b08e42a60bdb2924e6f(1)" width="300" height="300" class="pull-left">
+	</a>
+	<div class="author-content">
+		<h3>
+			<a href="https://scotch.io/author/samuel">
+				Samuel Oloruntoba			</a>
+						(<a href="https://twitter.com/kayandrae07">@kayandrae07</a>)
+					</h3>
+
+		<p></p>
+
+		<a id="view-contributions" class="btn btn-primary" href="https://scotch.io/author/samuel">
+			<span class="icon ion-ios-flame-outline"></span> View My Articles
+		</a>
+	</div>
+
+</div>												<div id="stay-connected" class="text-center secondary-box">
+
+	<div class="connected-container">
+		<a class="share-rss sbg-rss" href="https://scotch.io/feed">
+			<span class="icon ion-social-rss-outline"></span> Subscribe
+		</a>
+
+		<a class="sbg-twitter" href="http://twitter.com/scotch_io"> 
+			<span class="icon ion-social-twitter-outline"></span> Follow
+		</a>
+
+		<a class="sbg-facebook" href="http://www.facebook.com/scotchdevelopment"> 
+			<span class="icon ion-social-facebook-outline"></span> Like
+		</a>
+
+		<a class="sbg-googleplus" href="http://plus.google.com/b/113854128330570384219/+ScotchIo/posts">
+			<span class="icon ion-social-googleplus-outline"></span> +1
+		</a>
+	</div>
+
+	<h4><span class="icon ion-ios-email"></span></h4>
+	<p>Get valuable tips, articles, and resources straight to your inbox. Every Tuesday.</p>
+
+	<!-- Begin MailChimp Signup Form -->
+	<div id="mc_embed_signup">
+		<form action="https://scotch.us3.list-manage.com/subscribe/post?u=1c412c864c03eadaf07ccd61e&id=a818d504d4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" target="_blank" novalidate="">
+			
+		<input type="hidden" name="LOCATION" id="LOCATION" value="article_end">
+
+		<div class="mc-field-group form-group">
+			<input type="email" name="EMAIL" class="required email form-control" id="mce-EMAIL" placeholder="Email Address">
+		</div>
+
+		<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-primary">
+
+		<div id="mce-responses" class="clear">
+			<div class="response" id="mce-error-response" style="display:none"></div>
+			<div class="response" id="mce-success-response" style="display:none"></div>
+		</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+	    <div style="position: absolute; left: -5000px;"><input type="text" name="b_1c412c864c03eadaf07ccd61e_a818d504d4" value=""></div>
+	</form>
+	</div>
+	<!--End mc_embed_signup-->
+	
+</div>						<div id="comment-section" class="secondary-box">
+							<div id="disqus_thread"><iframe id="dsq-2" data-disqus-uid="2" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/saved_resource.html" style="width: 100% !important; border: none !important; overflow: hidden !important; height: 0px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+						</div>
+					</div>
+				
+			</div>
+
+		</div>
+		
+	</div>
+
+</article>	
+
+</div><!-- .site-content -->
+
+</div><!-- .site-canvas -->
+</div><!-- .site-wrapper -->
+</main><!-- #site-main -->
+
+	<footer id="site-footer">
+		<div id="footer-content">
+		<div class="row">
+			<div class="col-md-2 footer-box">
+				<nav class="footer-social">
+					<ul class="list-unstyled list-inline">
+						<li><a href="https://www.facebook.com/scotchdevelopment" class="sbg-facebook">
+							<span class="icon ion-social-facebook"></span>
+						</a></li>
+						<li><a href="https://twitter.com/scotch_io" class="sbg-twitter">
+							<span class="icon ion-social-twitter"></span>
+						</a></li>
+						<li><a href="https://plus.google.com/+ScotchIo/posts" class="sbg-googleplus">
+							<span class="icon ion-social-googleplus"></span>
+						</a></li>
+						<li><a href="http://feeds.feedblitz.com/scotch_io" class="sbg-rss">
+							<span class="icon ion-social-rss"></span>
+						</a></li>
+					</ul>
+				</nav>
+				<nav class="footer-nav">
+					<ul>
+						<li><a href="https://scotch.io/license">License</a></li>
+						<li><a href="https://scotch.io/advertise">Advertise with Us</a></li>
+						<!-- <li><a href="/about">About</a></li> -->
+						<li class="divider"></li>
+						<li><a href="http://shop.scotch.io/">Store</a></li>
+						<li><a href="https://scotch.io/write-for-us">Write for Us</a></li>
+						<li><a href="https://scotch.io/contact-us">Contact Us</a></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="col-md-3 footer-box">
+				<div class="footer-newsletter">
+					<h5>Join the Newsletter</h5>
+					<p>Web design/development tutorials and news from around the web.</p>
+					<!-- Begin MailChimp Signup Form -->
+					<div id="mc_embed_signup">
+					<form action="https://scotch.us3.list-manage.com/subscribe/post?u=1c412c864c03eadaf07ccd61e&id=a818d504d4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+						
+					<input type="hidden" name="LOCATION" id="LOCATION" value="footer">
+
+					<div class="mc-field-group form-group">
+						<input type="email" name="EMAIL" class="required email form-control" id="mce-EMAIL" placeholder="Email Address">
+					</div>
+						<div id="mce-responses" class="clear">
+							<div class="response" id="mce-error-response" style="display:none"></div>
+							<div class="response" id="mce-success-response" style="display:none"></div>
+						</div>
+					    <div style="position: absolute; left: -5000px;"><input type="text" name="b_1c412c864c03eadaf07ccd61e_a818d504d4" value=""></div>
+						<div class="clear text-center"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-success btn-block"></div>
+					</form>
+					</div>
+					<!--End mc_embed_signup-->
+				</div>
+			</div>
+			<div class="col-md-3 footer-box text-center footer-digital">
+				<a href="http://bit.ly/18ib8jR" class="text-danger">
+					<img src="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/digital.svg" width="250" height="22">
+					Hire Us
+				</a>
+			</div>
+			<div class="col-md-4 footer-box">
+				<div class="footer-announcement">
+					<a href="https://leanpub.com/mean-machine">
+						<img src="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/mean-machine-page-e1425418361486-129x1671.jpeg" class="img-responsive">
+					</a>
+					<div class="footer-announcement-content">
+						<h5>Learn Node and Angular</h5>
+						<p>Scotch's new JavaScript eBook. Learn the full JavaScript stack.</p>
+						<a href="https://leanpub.com/mean-machine" class="btn btn-info">Get the Book</a>
+					</div>			
+				</div>
+			</div>
+		</div>
+		<div class="text-center footer-copyright">
+			<p class="text-muted">Web design and development tutorials for the masses.</p>
+			<p>© Scotch.io | Proudly hosted by <a href="https://www.digitalocean.com/?refcode=eaf67777e85b">Digital Ocean</a></p>
+		</div>
+		</div>
+	</footer>
+	
+<!--[if lt IE 9]>
+	<script async data-cfasync="true" src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script async data-cfasync="true" src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="stylesheet" id="yarppRelatedCss-css" href="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/related.css" type="text/css" media="all">
+<script type="text/javascript" src="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/scripts.min.js"></script>
+<script type="text/javascript" src="./S.O.L.I.D_ The First 5 Principles of Object Oriented Design _ Scotch_files/editor.js"></script>
+
+<script>
+	// DISQUS COMMENT COUNTS
+	var disqus_shortname = 'scotchwebdevelopment';
+    (function() {
+        var s = document.createElement('script'); 
+        s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//scotchwebdevelopment.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+		<script>
+		// ADSENSE
+		var gadsense = document.createElement('script');
+			gadsense.type = 'text/javascript';
+			gadsense.async = true;
+			gadsense.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+		(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(gadsense);
+	</script>
+	
+		<script>
+		// BUY SELL ADS
+		(function() {
+			var bsa = document.createElement('script');
+				bsa.type = 'text/javascript';
+				bsa.async = true;
+				bsa.src = 'https://s3.buysellads.com/ac/bsa.js';
+			(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+		}());
+	</script>
+	
+	
+	
+
+
+
+
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Page Caching using apc
+Object Caching 2371/2434 objects using apc
+
+ Served from: scotch.io @ 2015-04-17 23:55:11 by W3 Total Cache --></body></html>
