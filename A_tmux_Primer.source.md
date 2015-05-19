@@ -4,13 +4,23 @@
 
 There are 4,257 tutorials on tmux. That’s a rough number that I just made up. This one is designed to take you from “wtf tmux” to “omg tmux” with extreme haste.
 
+关于 Tmux 的教程有 4257 篇之多。这个数还是我粗略估计的。这篇入门文章的目的是让你从“我去，tmux 是神马”极速地转变到“Tmux 真牛B”！
+
 Let’s get started.
+
+让我们开始吧！
 
 ## Why Tmux
 
+## 为什么要用 Tmux
+
 tmux is useful to people in different ways. To me, it’s most useful as a way to maintain persistent working states on remote servers—allowing you to detach and re-attach at will.
 
+tmux 在很多方面都很有用。由于 tmux 允许随时随地断开或重新接入会话（Session），对我而言，它最大的作用是将工作状态持久地保留在远程服务器上。
+
 You could, for example, have a session on your server for hacking on a node REST API (my current project), and call it “nodeapi”. And let us say that you are compiling something for it that will take two hours (work with me), but you’re currently working at a coffee shop and you have to leave. tmux lets you simply detach from that session and come back to it later.
+
+例如，你可以在服务器上开启一个会话，命名为“nodeapi”，用于挖掘 node REST API 的漏洞（这是我现在的项目）。或者假设你正在编译一些代码，而编译要花费 2 个小时才能完成（和我一起工作的话），这时
 
 That’s handy.
 
@@ -71,11 +81,11 @@ $ Ctrl-b s
 
 # Via tmux command
 
-$ tmux ls
+`$ tmux ls`
 
 Either way you get the same thing:
 
-0: 1 windows (created Thu Nov 28 06:12:52 2013) [80x24] (attached)
+`0: 1 windows (created Thu Nov 28 06:12:52 2013) [80x24] (attached)`
 
 ### Create a new session
 
@@ -103,11 +113,15 @@ $ tmux a -t session-name
 
 You can detach from an existing session (so you can come back to it later) by sending the detach command.
 
-$ tmux detach
+`$ tmux detach`
+
+`$ tmux detach`
 
 Or you can use the shortcut.
 
-$ Ctrl-b d
+`$ Ctrl-b d`
+
+`$ Ctrl-b d`
 
 Killing a session
 
@@ -185,6 +199,7 @@ Navigating with panes
 
 There’s a default way to navigate between panes, but I don’t know what it is. I’m a vim guy, so I navigate within my panes using the h, j, k, and l keys like so:
 
+```
 # Remap window navigation to vim
 unbind-key j
 bind-key j select-pane -D
@@ -194,60 +209,128 @@ unbind-key h
 bind-key h select-pane -L
 unbind-key l
 bind-key l select-pane -R
+```
 
 ## Recommendations
 
 A few thoughts that may help you in your tmux travels:
 
+以下几条建议也许会有助于诸位的 tmux 之旅：
+
 Consider using as few sessions and windows as possible. Humans aren’t as good at multitasking as we think we are, and while it feels powerful to have 47 panes open it’s usually not as functional as you’d imagine.
+
+1.  尽可能少打开会话和窗口。人类没有我们自认为的那样善于多任务处理。虽然打开 47 个窗格显得功能很强大，但是这并没有我们想象的那样实用。
+
 When you do use windows and panes, take the time to name them. They are indeed useful, but switching between sessions and windows is supremely annoying when they’re all labeled 0, 1, and 2.
+
+2.  当确实要使用窗口和窗格时，花一点时间为它们起个有意义的名字。这非常有用，如果只是用0、1、2这样的名字，切换会话或窗口时就会非常麻烦。
+
 Start with a basic config and get used to it before you get silly. I’ve seen multiple people spend hours configuring vim or tmux only to confuse themselves and abandon the project altogether. Start simple.
+
+3.  从基础的配置、操作开始，别把自己搞糊涂了。我曾遇到过很多人，他们花费大量的时间配置 vim 或 tmux，而最终带来的结果却是不但把自己绕进去了，项目也没有进展。
 
 ## Shortcut Reference
 
-Now a Ctrl-b options reference:
+## 快捷键参考
 
-Basics
+Now a `Ctrl-b` options reference:
 
-? get help
-Session management
+按下 `Ctrl-b` 后的快捷键如下：
 
-s list sessions
-$ rename the current session
-d detach from the current session
-Windows
+### Basics
 
-c create a new window
-, rename the current window
-w list windows
-% split horizontally
-" split vertically
-n change to the next window
-p change to the previous window
-0 to 9 select windows 0 through 9
-Panes
+### 基础
 
-% create a horizontal pane
-" create a vertical pane
-h move to the left pane. *
-j move to the pane below *
-l move to the right pane *
-k move to the pane above *
-k move to the pane above *
-q show pane numbers
-o toggle between panes
-} swap with next pane
-{ swap with previous pane
-! break the pane out of the window
-x kill the current pane
-Miscellaneous
+*  `?` get help
 
-t show the time in current pane
-I hope this has been helpful.
+*  `?` 获取帮助信息
 
-[ If you liked this, check out my other technical primers here. ]
+### Session management
+
+### 会话管理
+
+*   `s` list sessions
+*   `$` rename the current session
+*   `d` detach from the current session
+
+*   `s` 列出所有会话
+*   `$` 重命名当前的会话
+*   `d` 断开当前的会话
+
+### Windows
+
+### 窗口
+
+*   `c` create a new window
+*   `,` rename the current window
+*   `w` list windows
+*   `%` split horizontally
+*   `"` split vertically
+*   `n` change to the next window
+*   `p` change to the previous window
+*   `0` to `9` select windows 0 through 9
+
+*   `c` 创建一个新窗口
+*   `,` 重命名当前窗口
+*   `w` 列出所有窗口
+*   `%` 水平分割窗口
+*   `"` 竖直分割窗口
+*   `n` 选择下一个窗口
+*   `p` 选择上一个窗口
+*   `0~9` 选择0~9对应的窗口
+
+### Panes
+
+### 窗格
+
+*   `%` create a horizontal pane
+*   `"` create a vertical pane
+*   `h` move to the left pane. *
+*   `j` move to the pane below *
+*   `l` move to the right pane *
+*   `k` move to the pane above *
+*   <span style="color:red">`k` move to the pane above * （好像重复了）</span>
+*   `q` show pane numbers
+*   `o` toggle between panes
+*   `}` swap with next pane
+*   `{` swap with previous pane
+*   `!` break the pane out of the window
+*   `x` kill the current pane
+
+*   `%` 创建一个水平窗格
+*   `"` 创建一个竖直窗格
+*   `h` 将光标移入左侧的窗格
+*   `j` 将光标移入下方的窗格
+*   `l` 将光标移入右侧的窗格
+*   `k` 将光标移入上方的窗格
+*   `q` 显示窗格的编号
+*   `o` 在窗格间切换
+*   `}` 与下一个窗格交换位置
+*   `{` 与上一个窗格交换位置
+*   <span style="color:red">`!` 使窗格脱离窗口</red>
+*   `x` 关闭当前窗格
+
+### Miscellaneous
+
+*   `t` show the time in current pane
+
+*   `t` 在当前窗格显示时间
+
+I hope this has been helpful. 
+
+希望这篇文章有助于你理解 tmux。
+
+> [ If you liked this, check out my other technical primers here. ]
+
+> 如果喜欢这篇文章，那么不妨再读一读我写的其他入门级技术文章。
 
 ## Resources
 
-The man page.
-A thousand other great tutorials.
+## 资源
+
+1.  The man page.
+2.  A thousand other great tutorials.
+
+
+1.  man 手册
+2.  大量精彩教程
