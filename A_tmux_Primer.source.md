@@ -20,19 +20,31 @@ tmux 在很多方面都很有用。由于 tmux 允许随时随地断开或重新
 
 You could, for example, have a session on your server for hacking on a node REST API (my current project), and call it “nodeapi”. And let us say that you are compiling something for it that will take two hours (work with me), but you’re currently working at a coffee shop and you have to leave. tmux lets you simply detach from that session and come back to it later.
 
-例如，你可以在服务器上开启一个会话，命名为“nodeapi”，用于挖掘 node REST API 的漏洞（这是我现在的项目）。或者假设你正在编译一些代码，而编译要花费 2 个小时才能完成（和我一起工作的话），这时
+例如，你可以在服务器上开启一个会话，命名为“nodeapi”，用于挖掘 node REST API 的漏洞（这是我现在的项目）。或者假设你正在咖啡店里工作，需要编译一些代码，而编译要花费 2 个小时才能完成（如果是和我一起工作的话），这时你又不得不离开。有了 tmux，你就可以轻松地断开当前的会话，并于稍后方便时重新进入该会话。
 
 That’s handy.
 
+这真是太方便了。
+
 Others like to focus on how you can use tmux to have multiple panes within multiple windows within multiple tabs within multiple sessions. I don’t do that. I like fewer of those—as few as possible, actually—and this guide will be focused on a simple persistent-remote-sessions model.
+
+而其他人可能对如何使用 tmux 才能打开多个会话，在会话中打开多个标签（Tab），在标签中打开多个窗口（Window），在窗口中打开多个窗格（Pane）一事更感兴趣。我是不会这样做的，我不喜欢打开太多的东西，实际上，我是尽可能地少打开。因此，这篇教程主要讲解的也是作为简单的可持久化远程会话模型的 tmux。
 
 #### A remote computing lifestyle
 
+#### 远程计算（操作？）的生命周期
+
 Mobility is a central theme for tmux users. Many developers do all of their work from the server, and simply connect in from $wherever to do it. tmux (and similar tools) allow you to work from a coffee shop in SF, start something building on the server, disconnect to take a flight, and then pick up that same task on the ground in NYC when you land.
 
-A related advantage to this mobile approach is the fact that your client machine is not too terribly important. You can upgrade your laptop, clone a repo with your vim/tmux dotfiles in it, and you’re back to your optimum computing environment in minutes rather than days.
+机动性是 tmux 用户的主题。有很多开发者都是在服务器上进行所有工作的，他们只是简单地从某处连接上服务器就可以工作了。有了 tmux（或者其他类似的工具），你就可以先坐在旧金山的某个咖啡馆里开始在服务器上进行构建工作，然后断开会话去赶飞机，待飞机降落到纽约市后再继续进行刚刚的工作。
+
+A related advantage to this mobile approach is the fact that your client machine is not too terribly important. You can upgrade your laptop, clone a repo with your vim/tmux dotfiles in it, and you’re back to your optimum **computing environment** in minutes rather than days.
+
+tmux 带来的另一个好处是在移动办公中，作为客户端的计算机不再那么重要了。只需要升级你的笔记本，然后从版本库中克隆出 vim 和 tmux 的配置文件，就可以进入最优的操作环境了。而且这一切只需要短短的几分钟。
 
 Anyway, those are some reasons that people love tmux, but you don’t have to make this lifestyle change in order to see its benefits.
+
+总之，这些就是人们喜爱的原因。当然你没有必要去改变生活方式以体验 tmux 的好处。
 
 ### What about screen?
 
