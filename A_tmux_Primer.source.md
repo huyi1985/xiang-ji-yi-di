@@ -32,9 +32,9 @@ Others like to focus on how you can use tmux to have multiple panes within multi
 
 #### A remote computing lifestyle
 
-#### 远程计算（操作？）的生命周期
+#### 远程计算（操作？）的生活方式
 
-Mobility is a central theme for tmux users. Many developers do all of their work from the server, and simply connect in from $wherever to do it. tmux (and similar tools) allow you to work from a coffee shop in SF, start something building on the server, disconnect to take a flight, and then pick up that same task on the ground in NYC when you land.
+**Mobility** is a central theme for tmux users. Many developers do all of their work from the server, and simply connect in from $wherever to do it. tmux (and similar tools) allow you to work from a coffee shop in SF, start something building on the server, disconnect to take a flight, and then pick up that same task on the ground in NYC when you land.
 
 机动性是 tmux 用户的主题。有很多开发者都是在服务器上进行所有工作的，他们只是简单地从某处连接上服务器就可以工作了。有了 tmux（或者其他类似的工具），你就可以先坐在旧金山的某个咖啡馆里开始在服务器上进行构建工作，然后断开会话去赶飞机，待飞机降落到纽约市后再继续进行刚刚的工作。
 
@@ -44,82 +44,162 @@ tmux 带来的另一个好处是在移动办公中，作为客户端的计算机
 
 Anyway, those are some reasons that people love tmux, but you don’t have to make this lifestyle change in order to see its benefits.
 
-总之，这些就是人们喜爱的原因。当然你没有必要去改变生活方式以体验 tmux 的好处。
+总之，这些就是人们喜爱 tmux 的原因。当然即使你的生活不是四处奔波，也一样能体验到 tmux 带来的好处。
 
 ### What about screen?
 
+### 那么 screen 呢？
+
 Good question. tmux is a lot like screen, only better. The short answer for how it’s better is that tmux is better designed to perform the same functions. Screen gets you there (kind of) but does so precariously.
+
+问得好。tmux 和 screen 很像，但比 screen 更好。要问好在哪里，简单的回答就是虽然与 screen 的功能相同，但是 tmux 设计得更好。screen 能在某种程度上达到目的，但是很不稳定。
 
 Here are a few of the key advantages of tmux over screen:
 
-Screen is a largely dead project, and its code has significant issues
-Tmux is an active project with an active codebase
-Tmux is built to be truly client/server; screen emulates this behavior
-Tmux supports both emacs and vim shortcuts
-Tmux supports auto-renaming windows
-Tmux is highly scriptable
-Window splitting is more advanced in tmux
+以下是一些 tmux 胜过 screen 的优点：
+
+* Screen is a largely dead project, and its code has significant issues
+* Tmux is an active project with an active codebase
+* Tmux is built to be truly client/server; screen emulates this behavior
+* Tmux supports both emacs and vim shortcuts
+* Tmux supports auto-renaming windows
+* Tmux is highly scriptable
+* Window splitting is more advanced in tmux
+
+* screen 的项目大体上已经终止了，并且代码中有大量的问题
+* tmux是一个活跃的项目，并且其代码库经常更新
+* tmux使用的是真正的客户端/服务器模型，而 screen 只是模拟了这种模型的行为
+* tmux 同时支持 emacs 和 vim 的快捷键
+* tmux 支持自动重命名窗口
+* tmux 可以高度的脚本化
+* tmux 的窗口分割功能更加先进
+
 Enough about that. Use tmux.
+
+这些优点已经足够了吧，开始使用 tmux 吧。
 
 ## Basics
 
+## 基础
+
 Now is a good time to mention that there is a universal tmux shortcut that lets you quickly perform many tasks.
+
+首先要告诉诸位的是 tmux 中的一个universal的快捷键，用这个快捷键就可以执行很多任务。
 
 ### The tmux shortcut
 
+### tmux 的快捷键
+
 By default, tmux uses Ctrl-b as its shortcut activation chord, which enables you perform a number of functions quickly. Here are a few of the basics:
+
+tmux 默认使用 `Ctrl-b` 作为激活快捷键（操作）的开关，激活后就可以快速调用大量的功能。下面就是一些基础的功能：
 
 First you hit:
 
-$ Ctrl-b
+`$ Ctrl-b`
+
+首先按下
+
+`$ Ctrl-b`
 
 …followed by a number of options that we’ll talk about below. But get ready to use that Ctrl-b combo. Also consider remapping CAPSLOCK to CONTROL within your operating system; it makes the pinky walk for Ctrl-b quite nice.
+
+接下来就是一些后面将会讲解的option。不过先不要着急，先为使用组合键 `Ctrl-b` 做一点准备。不妨在操作系统中将键盘上的 CAPSLOCK 键映射为 Ctrl 键，这样就可以小拇指的移动更加舒服。
+
+### Invocation
 
 ### Invocation
 
 Right then. Let’s start by running tmux. You want to do this from the system that you want to detach and re-attach to—which for me is usually a remote server.
 
-$ tmux
+`$ tmux`
+
+好了，下面让我们从运行 tmux 开始。请在你希望在断开会话后依然可以重新连接的系统（对我来说这通常是远程服务器）上运行如下的命令：
+
+`$ tmux`
 
 Simple enough. You now have a tmux session open that you can disconnect from and come back to later.
 
+很简单对吧。现在就开启了一个 tmux 的会话，你可以断开这个会话并在稍后再重新接入。
+
 ### Show Sessions
+
+### 显示所有会话
 
 Since the idea of tmux is having multiple sessions open, and being able to disconnect and reconnect to them as desired, we need to be able to see them quickly.
 
+由于 tmux 的理念是可以开启多个会话，并且可以随心地断开会话后重新接入，所以我们需要先能立刻看到这些会话。
+
+```
 # Via shortcut (by default Ctrl-b)
 
 $ Ctrl-b s
+```
 
-# Via tmux command
+```
+# 通过快捷键（默认 Ctrl-b）
 
-`$ tmux ls`
+$ Ctrl-b s
+```
+
+```
+# 通过tmux命令
+
+$ tmux ls
+```
 
 Either way you get the same thing:
+
+上面两种方法的效果相同，都可以得到类似下面的结果：
 
 `0: 1 windows (created Thu Nov 28 06:12:52 2013) [80x24] (attached)`
 
 ### Create a new session
 
+### 开启一个新的会话
+
 Now we’re going to create a new session. You can do this with just the new command, or by providing an argument to it that serves as the session name. I recommend providing a session name, since organization is rather the point of tmux.
 
-$ tmux new -s session-name
+下面我们就来开启一个新的会话。可以使用 `new` 命令开启新的会话，并且可以以参数的形式传递一个会话名给该命令。我建议要提供一个会话名以便于管理。
 
-# Without naming the new session (not recommended)
+```
+$ tmux new -s session-name
+```
+```
+# Without naming the new session (not recommended) 
 
 $ tmux new
+```
+
+```
+# 开启新会话时未指定名字 (不推荐) 
+
+$ tmux new
+```
 
 ### Attaching to an existing session
 
+### 接入一个之前的会话
+
 Since we’re going to be creating sessions with names, and we may have more than one, we want to be able to attach to them properly. There are a couple ways of doing this.
 
-You can simply type tmux a and it’ll connect you to the first available session.
+既然我们已经创建了多个带有名称的会话，那么就会想要properly接入它们吧，有几种方法可以实现：
 
+You can simply type `tmux a` and it’ll connect you to the first available session.
+
+可以简单地输入 `tmux a`，这样可以接入第一个可用的会话。
+
+```
 $ tmux a
+```
 
 Or you can attach to a specific session by providing an argument.
 
+或者可以通过参数制定一个要接入的会话：
+
+```
 $ tmux a -t session-name
+```
 
 ### Detaching from a session
 
