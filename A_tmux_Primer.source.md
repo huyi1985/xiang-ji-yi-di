@@ -96,8 +96,6 @@ tmux 默认使用 `Ctrl-b` 作为激活快捷键（操作）的开关，激活�
 
 First you hit:
 
-`$ Ctrl-b`
-
 首先按下
 
 `$ Ctrl-b`
@@ -108,11 +106,9 @@ First you hit:
 
 ### Invocation
 
-### Invocation
+### 运行 tmux
 
 Right then. Let’s start by running tmux. You want to do this from the system that you want to detach and re-attach to—which for me is usually a remote server.
-
-`$ tmux`
 
 好了，下面让我们从运行 tmux 开始。请在你希望在断开会话后依然可以重新连接的系统（对我来说这通常是远程服务器）上运行如下的命令：
 
@@ -128,7 +124,7 @@ Simple enough. You now have a tmux session open that you can disconnect from and
 
 Since the idea of tmux is having multiple sessions open, and being able to disconnect and reconnect to them as desired, we need to be able to see them quickly.
 
-由于 tmux 的理念是可以开启多个会话，并且可以随心地断开会话后重新接入，所以我们需要先能立刻看到这些会话。
+由于 tmux 的理念是可以开启多个会话，并且可以随心地断开会话后重新接入，为此我们首先需要能立刻看到这些会话。
 
 ```
 # Via shortcut (by default Ctrl-b)
@@ -160,19 +156,16 @@ Either way you get the same thing:
 
 Now we’re going to create a new session. You can do this with just the new command, or by providing an argument to it that serves as the session name. I recommend providing a session name, since organization is rather the point of tmux.
 
-下面我们就来开启一个新的会话。可以使用 `new` 命令开启新的会话，并且可以以参数的形式传递一个会话名给该命令。我建议要提供一个会话名以便于管理。
+下面我们就来新建一个新的会话。可以使用 `new` 命令开启新的会话，并且可以以参数的形式传递一个会话名给该命令。我建议在新建时要提供一个会话名以便于日后的管理。
 
 ```
 $ tmux new -s session-name
 ```
+
+
 ```
 # Without naming the new session (not recommended) 
-
-$ tmux new
-```
-
-```
-# 开启新会话时未指定名字 (不推荐) 
+# 新建会话但并不指定名字 (不推荐) 
 
 $ tmux new
 ```
@@ -195,7 +188,7 @@ $ tmux a
 
 Or you can attach to a specific session by providing an argument.
 
-或者可以通过参数制定一个要接入的会话：
+或者可以通过参数指定一个要接入的会话：
 
 ```
 $ tmux a -t session-name
@@ -203,96 +196,142 @@ $ tmux a -t session-name
 
 ### Detaching from a session
 
+### 从会话中断开
+
 You can detach from an existing session (so you can come back to it later) by sending the detach command.
 
-`$ tmux detach`
+可以使用`detach`命令断开已有的会话（因此稍后才会有重新接入会话这么一说）。
 
 `$ tmux detach`
 
 Or you can use the shortcut.
 
-`$ Ctrl-b d`
+也可以使用快捷键断开会话：
 
 `$ Ctrl-b d`
 
-Killing a session
+### Killing a session
+
+### 关闭会话
 
 There are times when you’ll want to destroy a session. This can be done using the following syntax, which is much the same as attachment:
 
-$ tmux kill-session -t session-name
+要关闭会话的话，可以使用如下的命令，该命令和接入会话时所使用的命令很像：
+
+`$ tmux kill-session -t session-name`
 
 [ NOTE: You can kill windows the same way, but using kill-window instead. You can also kill tmux altogether with killall tmux. ]
 
+提示：关闭窗口时也可以用类似的方法，只不过要把 kill-session 换成 kill-window。另外，还可以使用 tmux killall 同时关闭 tmux。
+
 ## Configuration
+
+## 配置
 
 As with most things in tech, you can get pretty silly with your tmux config. The common things to tinker with are:
 
-The primary tmux shortcut
-Your status bar
-Your various keyboard shortcuts
+与其他工具一样，一旦配置好了 tmux，使用起来就将会非常顺手。下面就给出几个通常需要配置的项目：
+
+* The primary tmux shortcut
+* Your status bar
+* Your various keyboard shortcuts
+
+* tmux 的主要快捷键
+* 屏幕下方的状态条
+* 自定义的各种快捷键
+
 I went pretty Spartan with mine.
 
+我使用了一些相当简单的配置：
+
+```
 # Set a Ctrl-b shortcut for reloading your tmux config
+# 设置一个 Ctrl-b 后面的快捷键，用于重新加载 tmux 的配置文件
 bind r source-file ~/.tmux.conf
 
-
 # Rename your terminals
+# 重命名终端
 set -g set-titles on
 set -g set-titles-string '#(whoami)::#h::#(curl ipecho.net/plain;echo)'
 
-
-
 # Status bar customization
+# 自定义状态条
 set -g status-utf8 on
 set -g status-bg black
 set -g status-fg white
 set -g status-interval 5
 set -g status-left-length 90
 set -g status-right-length 60
-set -g status-left "#[fg=Green]#(whoami)#[fg=white]::#[fg=blue] \
-
-
-
-(hostname - s)#[fg=white]::##[fg=yellow]#(curl ipecho.net/plain;echo)"
-
-
+set -g status-left "#[fg=Green]#(whoami)#[fg=white]::#[fg=blue]\
+(hostname -s)#[fg=white]::##[fg=yellow]#(curl ipecho.net/plain;echo)"
 
 set -g status-justify left
 set -g status-right '#[fg=Cyan]#S #[fg=white]%a %d %b %R' 
+```
 
 One thing worth noting here is that I use ipecho.net to get my current WAN IP4 WAN address instead of icanhazip as most other tutorials have. It’s just faster and less prone to error, from my experience.
 
+这里有一点值得注意，我使用 ipecho.net 而不是 icanhazip 来获取计算机当前的 IP 地址（IPv4）。虽然有很多教程使用的是 icanhazip，但是凭借我的经验，ipecho.net 的速度更快，更稳定。
+
 [ My current, updated configuration can be found here if you’re interested. ]
+
+提示：如果你感兴趣，可以从[这里](这里)查看我最新的配置。
 
 ## Advanced
 
+## 高级功能
+
 That covers how I usually use tmux, but I do often make use of some of the more powerful features.
+
+我平时常用的功能就是这些了。不过，我也会经常使用一些 tmux 中更强大的功能。
 
 ### Windows and Panes
 
-tmuxpanes
+### 窗口和窗格
 
-One of these features is the ability to break your session into more discreet components, called windows and panes. These are good for organizing multiple varied activities in a logical way.
+![tmuxpanes]()
+
+One of these features is the ability to break your session into more discreet(discrete?) components, called windows and panes. These are good for organizing multiple varied activities in a logical way.
+
+这些高级功能之一就是 tmux 可以将一个会话分割成若干个称为窗口（Window）和窗格（Pane）的相互分离的组件。这种逻辑上的分割非常适合于用户安排各种各样的活动。
 
 Let’s look at how they relate to each other.
 
-Nesting
+下面就来看一看这几个概念之间的关系。
 
-tmuxnesting
+#### Nesting
+
+#### 层次结构
+
+![](tmuxnesting)
 
 tmux sessions have windows, and windows have panes. Below you can see how how I conceptualize them—although if anyone has a more authoritative or useful hierarchy I’ll happily embrace it.
 
-Sessions are for an overall theme, such as work, or experimentation, or sysadmin.
-Windows are for projects within that theme. So perhaps within your experimentation session you have a window titled noderestapi, and one titled lua sample.
-Panes are for views within your current project. So within your sysadmin session, which has a logs window, you may have a few panes for access logs, error logs, and system logs.
+一个会话包含多个窗口，一个窗口包含多个窗格。下图就是我对这些概念的理解。当然如果诸位有更权威或者更实用的层次结构，我很乐意洗耳恭听。
+
+* Sessions are for an overall theme, such as work, or experimentation, or sysadmin.
+* Windows are for projects within that theme. So perhaps within your experimentation session you have a window titled noderestapi, and one titled lua sample.
+* Panes are for views within your current project. So within your sysadmin session, which has a logs window, you may have a few panes for access logs, error logs, and system logs.
+
+* 会话用于大的工作内容，例如日常工作，实验或是系统管理。
+* 窗口适用于这些大工作中的项目。例如，在用于实验的会话中可能有一叫做 noderestapi 的窗口，有一个叫做 lua 的窗口。
+* 窗格适用于浏览当前的项目。例如，在系统管理的会话中有一个叫做 logs 的窗口，在这个窗口中可以打开多个窗格分别用于浏览 access log，error log和system log。
+
 It’s also possible to create panes within a session without first creating a separate window. I do this sometimes. Hopefully it isn’t as horrible as it sounds right after reading about nesting. As I said in the beginning, I incline towards simplicity with my use of tmux.
 
-Navigating with panes
+我们也可以在会话中直接创建窗格，而不需要先创建一个分离的窗口。我有时会这样做。当阅读完“层次结构”这一小节，希望我的这种做法没有听起来那样恐怖。正如我在一开始谈到的，我倾向于简化 tmux 的使用。
+
+#### Navigating with panes
+
+#### 在窗格间移动光标
 
 There’s a default way to navigate between panes, but I don’t know what it is. I’m a vim guy, so I navigate within my panes using the h, j, k, and l keys like so:
 
+虽然有默认的在窗格间移动光标的方法，但是我并不清楚是什么。因为我习惯用 vim，所以我会用h，j，k和l键在窗格间移动光标。为此，要加入如下的配置：
+
 ```
-# Remap window navigation to vim
+# Remap window(pane?) navigation to vim
+# 用 vim 的方式在窗格间移动光标
 unbind-key j
 bind-key j select-pane -D
 unbind-key k
