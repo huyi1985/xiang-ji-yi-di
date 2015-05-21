@@ -4,11 +4,11 @@
 
 There are 4,257 tutorials on tmux. That’s a rough number that I just made up. This one is designed to take you from “wtf tmux” to “omg tmux” with extreme haste.
 
-关于 Tmux 的教程有 4257 篇之多。这个数还是我粗略估计的。这篇入门文章的目的是让你从“我去，tmux 是神马”极速地转变到“Tmux 真牛B”！
+有关 Tmux 的教程多达 4257 篇，这个数还是我粗略统计的。而我这篇入门教程的目的是让你从“我去，tmux 是神马”极速地转变到“Tmux 真牛B”！
 
 Let’s get started.
 
-让我们开始吧！
+那么，我们就开始吧！
 
 ## Why Tmux
 
@@ -16,11 +16,11 @@ Let’s get started.
 
 tmux is useful to people in different ways. To me, it’s most useful as a way to maintain persistent working states on remote servers—allowing you to detach and re-attach at will.
 
-tmux 在很多方面都很有用。由于 tmux 允许随时随地断开或重新接入会话（Session），对我而言，它最大的作用是将工作状态持久地保留在远程服务器上。
+tmux 在很多方面都很有用。对我而言，由于 tmux 允许随时随地断开或重新接入会话（Session），所以它最大的作用就是在远程服务器上持久地保存工作状态。
 
 You could, for example, have a session on your server for hacking on a node REST API (my current project), and call it “nodeapi”. And let us say that you are compiling something for it that will take two hours (work with me), but you’re currently working at a coffee shop and you have to leave. tmux lets you simply detach from that session and come back to it later.
 
-例如，你可以在服务器上开启一个会话，命名为“nodeapi”，用于挖掘 node REST API 的漏洞（这是我现在的项目）。或者假设你正在咖啡店里工作，需要编译一些代码，而编译要花费 2 个小时才能完成（如果是和我一起工作的话），这时你又不得不离开。有了 tmux，你就可以轻松地断开当前的会话，并于稍后方便时重新进入该会话。
+例如，你可以在服务器上新建一个会话并命名为“nodeapi”，然后用它来挖掘 node REST API 的漏洞（这是我现在的项目）。或者假设你正在咖啡店里工作，需要编译一些代码，而编译要花费 2 个小时才能完成（如果是和我一起工作的话），这时你又不得不离开咖啡店。如果使用了 tmux，你就可以轻松地断开当前的会话，并于稍后方便时重新接入该会话，继续工作。
 
 That’s handy.
 
@@ -28,7 +28,7 @@ That’s handy.
 
 Others like to focus on how you can use tmux to have multiple panes within multiple windows within multiple tabs within multiple sessions. I don’t do that. I like fewer of those—as few as possible, actually—and this guide will be focused on a simple persistent-remote-sessions model.
 
-而其他人可能对如何使用 tmux 才能打开多个会话，在会话中打开多个标签（Tab），在标签中打开多个窗口（Window），在窗口中打开多个窗格（Pane）一事更感兴趣。我是不会这样做的，我不喜欢打开太多的东西，实际上，我是尽可能地少打开。因此，这篇教程主要讲解的也是作为简单的可持久化远程会话模型的 tmux。
+“如何使用 tmux 才能打开多个会话，如何在会话中打开多个标签（Tab），如何在标签中打开多个窗口（Window），又如何在窗口中打开多个窗格（Pane）”，也许有人对这些操作更感兴趣。而我是不会这样做的，因为我不喜欢打开太多的——实际上是尽可能少地打开——这些东西。因此，这篇入门教程主要讲解的也是作为简单的可持久化远程会话模型的 tmux。
 
 #### A remote computing lifestyle
 
@@ -36,7 +36,7 @@ Others like to focus on how you can use tmux to have multiple panes within multi
 
 **Mobility** is a central theme for tmux users. Many developers do all of their work from the server, and simply connect in from $wherever to do it. tmux (and similar tools) allow you to work from a coffee shop in SF, start something building on the server, disconnect to take a flight, and then pick up that same task on the ground in NYC when you land.
 
-机动性是 tmux 用户的主题。有很多开发者都是在服务器上进行所有工作的，他们只是简单地从某处连接上服务器就可以工作了。有了 tmux（或者其他类似的工具），你就可以先坐在旧金山的某个咖啡馆里开始在服务器上进行构建工作，然后断开会话去赶飞机，待飞机降落到纽约市后再继续进行刚刚的工作。
+机动性是 tmux 用户的主题。有很多开发者都是在服务器上进行所有工作的，他们只是简单地从某处连接上服务器就可以工作了。有了 tmux（或者其他类似的工具），你就可以先坐在旧金山的某个咖啡店里开始在服务器上进行构建工作，然后断开会话去赶飞机，待飞机降落到纽约市后再继续进行刚刚的工作。
 
 A related advantage to this mobile approach is the fact that your client machine is not too terribly important. You can upgrade your laptop, clone a repo with your vim/tmux dotfiles in it, and you’re back to your optimum **computing environment** in minutes rather than days.
 
@@ -152,11 +152,11 @@ Either way you get the same thing:
 
 ### Create a new session
 
-### 开启一个新的会话
+### 新建会话
 
 Now we’re going to create a new session. You can do this with just the new command, or by providing an argument to it that serves as the session name. I recommend providing a session name, since organization is rather the point of tmux.
 
-下面我们就来新建一个新的会话。可以使用 `new` 命令开启新的会话，并且可以以参数的形式传递一个会话名给该命令。我建议在新建时要提供一个会话名以便于日后的管理。
+下面我们就来新建一个新的会话。可以使用 `new` 命令新建会话，并且可以以参数的形式传递一个会话名给该命令。我建议在新建时要提供一个会话名以便于日后的管理。
 
 ```
 $ tmux new -s session-name
