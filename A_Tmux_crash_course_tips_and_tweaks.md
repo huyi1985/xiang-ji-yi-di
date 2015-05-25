@@ -179,51 +179,78 @@ set -g prefix C-a
 
 ### Tmux 的配置文件
 
-`~/.tmux.conf` is a file that Tmux reads every time a new session opens. It’s where the customizations for Tmux need to be placed. // Suggestion: in the case that you need (and chances are you will) to apply a new change made to the without opening a new session, you can add the following line to the ~/.tmux.conf file:
+`~/.tmux.conf` is a file that Tmux reads every time a new session opens. It’s where the customizations for Tmux need to be placed. // Suggestion: in the case that you need (**and chances are you will**) to apply a new change made to the without opening a new session, you can add the following line to the ~/.tmux.conf file:
 
 每当开启一个新的会话时，Tmux 都会读取 `~/.tmux.conf` 这个文件。对 Tmux 的配置就需要写入这个文件。
 
-小提示：如果
+小提示：如果你不希望直到开启一个新的会话，一个新的配置项才能生效，那么你可以将下面这一行加入到 `~/.tmux.conf` 文件中。
 
 ```
 # bind a reload key
 bind R source-file ~/.tmux.conf \; display-message "Config reloaded.."
 ```
 
-This way, once you have added a new change to the `~/.tmux.conf` file, just press `ctrl-b R` to reload your configuration without having to open a new Tmux session.
+This way, once you have added a new change to the `~/.tmux.conf` file, just press `Ctrl-b R` to reload your configuration without having to open a new Tmux session.
+
+这样的话，每当你向 `~/.tmux.conf` 文件中添加了新的配置，只需要按下 `Ctrl-b R` 就可以重新加载配置项，从而免去了开启一个新的会话。
  
 ## ~ The best of Tmux
 
+## Tmux 中最棒的功能
+
 Quick note: the screenshot shown here may differ slightly from what you see by default when you install Tmux. This is because I modified the status bar. If you want to do the same follow the steps on the “Pimp your Tmux bar” section of this post.
 
-提示：
+提示：下面这张截图也许与你安装 Tmux 时看到的画面略有不同。这是因为我修改了状态栏。如果你也想对状态栏进行修改，那么可以按照“优化 Tmux 的状态栏”这一节中的步骤来修改。
 
 ### Panes
 
+### 窗格
+
 I like the idea of dividing the screen vertically, so that on one side of the screen I have Vim and on the other side I have the output of my code. I could even have another console if I wanted to. Here’s how Tmux makes it happen:
+
+我认为将屏幕分割为左右两部分是个不错的主意，这样我就可以在一边使用 Vim，而在另一边输出代码的运行结果。甚至有时我还会再打开一个控制台。下面我就会讲解如何利用 Tmux 实现这些。
 
 ![image2](http://tangosource.com/wp-content/uploads/2015/05/image2.png)
 
 What you see in the image:
 
+从图中可以看出：
+
 - Left side: Vim (at the top: a Ruby class file, at the bottom: a test file for the Ruby class).
 - Right side: a bash session.
 
+* 左侧：Vim（在左上方是一个 Ruby 的类文件，在左下方是对这类的测试文件）
+* 右侧：一个 Bash 的会话
+
 A vertical `pane` is easy to create. Once you have launched a new Tmux session just press `Ctrl-b %` and a new vertical pane will appear. Also, if what you need is a horizontal division then press `Ctrl-b “`. Navigating through Tmux panes is easy, just press the Tmux prefix and then any of the direction arrows depending on which pane you want to go.
+
+一个竖直放置的窗格非常容易创建。一旦开启了一个 Tmux 会话，那么只需要按下 `Ctrl-b %` ，一个竖直放置的窗格就出现了。另外，如果你需要把屏幕沿水平方向分割，则只需要按下 `Ctrl-b “`。在 Tmux 的窗格间移动光标也很简单，只需要先按下 Tmux 的快捷键前缀，然后按下方向键就可以让光标进入对应的窗格。
 
 ### Windows
 
-In Tmux, a window is a container for one or more panes. Tmux windows allow you to arrange multiple panes inside windows depending on what you need. For instance, in my case I usually have one window called “server” for running the app’s server (where I can see the log), another window called “editor” (where I do the coding). One pane for Vim and another for running the code tests. And another window called “shell”, which is a bash shell where I can run system commands. Tmux windows are useful since they allow users to allocate panes inside of them, to see more about each pane by going to the window that contains it. This is an efficient use of the available screen space.
+### 窗口
+
+In Tmux, a window is a container for one or more panes. Tmux windows allow you to arrange multiple panes inside windows depending on what you need. For instance, in my case I usually have one window called “server” for running the app’s server (where I can see the log), another window called “editor” (where I do the coding). One pane for Vim and another for running the code tests. And another window called “shell”, which is a bash shell where I can run system commands. Tmux windows are useful since they allow users to allocate panes inside of them, **to see more about each pane by going to the window that contains it**. This is an efficient use of the available screen space.
+
+在Tmux中，窗口是个容器，可以包含一个或多个窗格。而且窗口允许你根据需求排列窗口中的多个窗格。例如，我经常是开启一个叫作“服务器”（Server）的窗口用于运行应用程序的服务器（因此在这个窗口中可以看到服务器的日志），然后开启一个另一个叫作“编辑器”（Editor），我在这里进行编码。再开启两个窗格，一个用于Vim，一个用于运行测试代码。最后再开启一个叫作“shell”的窗口用于通过Bash shell运行命令。Tmux 的窗口很实用，因为它允许在里面创建窗格，～～～～，这样可以有效地利用屏幕的空间。
 
 The list of existent windows in a Tmux session displays at the bottom of the screen. Here is an example of how Tmux displays (by default) the list of windows created. In this case, there are three windows: “server”, “editor” and “shell”):
+
+在一个Tmux的会话中已有窗口的列表显示在屏幕下方。下图所示的就是Tmux在默认情况下如何显示已有窗口的列表。这这里，一共有三个窗口，分别是“server”、“editor”和“shell”。
 
 ![image3](http://tangosource.com/wp-content/uploads/2015/05/image3.png)
 
 In order to create a new window you need to press `Ctrl-b c`. To navigate through windows press `Ctrl-b` followed by the index number of the window you want to go. The index number displays next to the name.
 
+要想创建一个窗口，只需要按下`Ctrl-b c`；要想切换窗口，只需要先按下`Ctrl-b` 然后再按下想切换到的窗口对应的数字，这个数字会紧挨着窗口的名字显示。
+
 ### Sessions
 
-A Tmux session can contain multiple windows. Sessions are a neat feature; I can create a Tmux session that is exclusive to a particular project. To create a new session just run the following command on your terminal:
+### 会话
+
+A Tmux session can contain multiple windows. Sessions are a neat feature; I can create a Tmux session that is **exclusive to** a particular project. To create a new session just run the following command on your terminal:
+
+一个Tmux会话中可以包含多个窗口。会话是一个**精简**的功能，例如可以为一个特定的项目创建一个Tmux会话。要想创建一个新的会话，只需要在终端运行如下的命令：
 
 ```
 $ tmux new -s <name-of-my-session>
@@ -231,19 +258,29 @@ $ tmux new -s <name-of-my-session>
 
 If I need to work on a different project I will just create a new session for that. Although the focus will be on the new session, the original session will remain alive. This allows me to get back to it later, and continue where I left off. To create a new session press `Ctrl-b :` and then enter the following command:
 
+如果我需要进行另一个不同的项目，那么我将会为此再新建一个会话。虽然进入了新的会话，但是原来的会话并没有消失。这就允许我在稍后会到之前的会话继续工作。要想创建一个新的会话，只需要按下 `Ctrl-b :` ，然后输入如下的命令：
+
 ```
 new -s <name-of-my-new-session>
 ```
 
 Tmux sessions remain alive until you restart your machine or you explicitly kill the session. As long as you don’t restart your machine, you can jump from a project’s session to another as you need it.
+
+除非显式地关闭会话，否则Tmux的会话在重启计算机之前都不会消失。只要还没有重启计算机，你就可以自由地从一个项目的会话跳转到另一个。
  
 ### Navigation through Tmux sessions
 
+### 在 Tmux 的会话间切换
+
 To get a list of the existing sessions, press `Ctrl-b s`. Here is an example of what Tmux will show you:
+
+要想获取已有会话的列表，可以按下`Ctrl-b s`。下图就是会话列表的例子：
 
 ![image4](http://tangosource.com/wp-content/uploads/2015/05/image4.png)
 
 Each session listed has an ID number, starting from zero. In order to go to that session type the session’s ID number in your keyboard. In the case that you are not in Tmux but you have one or more sessions running just use:
+
+列表中的每个会话都有一个从0开始的ID。为了进入会话，可以按下会话对应的ID。但是如果你已经创建了一个或多个会话，但是还没有进入，那么输入如下的命令：
 
 ```
 $ tmux attach
@@ -251,13 +288,23 @@ $ tmux attach
 
 This command will take you back to your Tmux sessions.
 
+这条命令的作用时让你接入已开启的会话。
+
 ### Fast text navigation and copying
+
+### 在文本间快速移动光标，复制文本
 
 I always disliked the fact that to copy content from iTerm2 quickly you need to use the keyboard plus the mouse. I think that there should be a quicker way to do it without having to use the mouse. Fortunately, Tmux allows for that, since it is run from the command line, where the use of the mouse is not allowed.
 
+在iTerm2中，为了快速地复制内容必须要键盘和鼠标一起用，这一点我一直很不喜欢。我想一定会有不需要用鼠标，更快的复制方法。幸运的是，Tmux就提供了这个功能，因为Tmux是从命令行启动的，在命令行界面是无法使用鼠标的。
+
 #### Navigate text
 
-Tmux allows for text navigation in a way that is very similar to Vim. You know, where the k key goes one line up, w moves one word forwards, and so on. Yet you can increase Tmux’s similarity with Vim by telling it to use the `vi` mode. Here is what you need to add in your `~/.tmux.conf` file to accomplish this:
+#### 在文本间移动光标
+
+Tmux allows for text navigation in a way that is very similar to Vim. You know, where the k key goes one line up, w moves one word forwards, and so on. **Yet** you can increase Tmux’s similarity with Vim by telling it to use the `vi` mode. Here is what you need to add in your `~/.tmux.conf` file to accomplish this:
+
+Tmux允许使用与Vim极为相似的方式在文本间移动光标。正如你知道的，用K键将光标移动到上一行，用W键将光标移动到后一个词上等等。而且可以通过把Tmux设为vi模式，使其与vim的操作更加接近。为此，需要将以下配置加入到配置文件`~/.tmux.conf`。
 
 ```
 # Use vim keybindings in copy mode
@@ -291,7 +338,9 @@ Now that the `vi` mode is set and `rettach-to-user-namespace` installed, let’s
 
 既然已经设置成了 vi 模式，也安装了  `rettach-to-user-namespace`，下面就让我们来看看如何从 Tmux 的会话中复制文本。假设为了复制 IP 地址，我们运行了 `ifconfig` 命令。接下来就请跟随以下的步骤：
 
-Enter copy mode: `ctrl-b [`. You’ll see a short highlighted text appear at the top right of the screen as in the following image (“*[0/0]*”).
+Enter copy mode: `Ctrl-b [`. You’ll see a short highlighted text appear at the top right of the screen as in the following image (“*[0/0]*”).
+
+这时按下 `Ctrl-b [`即可进入复制模式。如图所示，可以看到一小段高亮的文本会出现在平面的右上角 (“*[0/0]*”)。
  
 ![image5](http://tangosource.com/wp-content/uploads/2015/05/image5.png)
 
