@@ -304,7 +304,7 @@ I always disliked the fact that to copy content from iTerm2 quickly you need to 
 
 Tmux allows for text navigation in a way that is very similar to Vim. You know, where the k key goes one line up, w moves one word forwards, and so on. **Yet** you can increase Tmux’s similarity with Vim by telling it to use the `vi` mode. Here is what you need to add in your `~/.tmux.conf` file to accomplish this:
 
-Tmux允许使用与Vim极为相似的方式在文本间移动光标。正如你知道的，用K键将光标移动到上一行，用W键将光标移动到后一个词上等等。而且可以通过把Tmux设为vi模式，使其与vim的操作更加接近。为此，需要将以下配置加入到配置文件`~/.tmux.conf`。
+在 Tmux 中可以使用与 Vim 极为相似的方式在文本间移动光标。正如你知道的，用K键将光标移动到上一行，用W键将光标移动到后一个词上等等。而且可以通过把Tmux设为vi模式，使其与vim的操作更加接近。为此，需要将以下配置加入到配置文件`~/.tmux.conf`。
 
 ```
 # Use vim keybindings in copy mode
@@ -317,7 +317,11 @@ setw -g mode-keys vi
 
 By default, when you copy text from Tmux, the text is only available to be pasted inside that same Tmux session. In order to make that text available to be pasted anywhere, you have to tell Tmux to copy to system’s clipboard. Here’s how to do it:
 
+在默认情况下，当从 Tmux 中复制文本时，复制下来的文本只能粘贴到同一个 Tmux 会话中。为了将复制下来的文本粘贴到任何位置，就需要告诉 Tmux 要将文本复制到系统的剪贴板。为此，需要这样做：
+
 Install retach-to-user-namespace, this is very easy with brew, just run the following command:
+
+安装 retach-to-user-namespace，用 brew 安装的话将会非常简单，只需要运行下面这条命令：
 
 ```
 $ brew install reattach-to-user-namespace
@@ -336,25 +340,37 @@ set-option -g default-command "reattach-to-user-namespace -l bash"
 
 Now that the `vi` mode is set and `rettach-to-user-namespace` installed, let’s see how to copy text from a Tmux session. Let’s say you’ve run the `ifconfig` command because you wanted to copy your ip address. Now, follow these steps to copy that text:
 
-既然已经设置成了 vi 模式，也安装了  `rettach-to-user-namespace`，下面就让我们来看看如何从 Tmux 的会话中复制文本。假设为了复制 IP 地址，我们运行了 `ifconfig` 命令。接下来就请跟随以下的步骤：
+既然已经设置成了 vi 模式，也安装了 `rettach-to-user-namespace`，下面就让我们来看看如何从 Tmux 的会话中复制文本。假设要复制的是 IP 地址，于是我们运行了 `ifconfig` 命令。接下来就请跟随以下的步骤：
 
 Enter copy mode: `Ctrl-b [`. You’ll see a short highlighted text appear at the top right of the screen as in the following image (“*[0/0]*”).
 
-这时按下 `Ctrl-b [`即可进入复制模式。如图所示，可以看到一小段高亮的文本会出现在平面的右上角 (“*[0/0]*”)。
+先按下 `Ctrl-b [` 进入复制模式。如图所示，可以看到一小段高亮的文本会出现在平面的右上角 (“*[0/0]*”)。
  
 ![image5](http://tangosource.com/wp-content/uploads/2015/05/image5.png)
 
 Start moving across the text as you would do in Vim: with j, k, l, h, etc..
 
+然后就可以像在 Vim 中一样用 j、k、l 和 h 等键在文本间移动光标了。
+
 Once you get to the text you want to copy press the spacebar and start selecting text (exactly as you would do it in Vim).
 
+把光标移动到想复制的文本上以后再按下空格键就可以开始选择文本了（这和在 Vim 中复制文本的步骤一模一样）。
+
 Once text is selected press the enter key
+
+选择完要复制的文本后再按下回车键。
  
 Now that you have copied your IP address, paste it wherever you want.
 
+这样 IP 地址就复制下来了并可以粘贴到任何地方。
+
 ### Make text copying even more Vim-like
 
+### 让复制文本的操作更像 Vim
+
 You can use `v` key to select text and `y` to copy it, just add the following to your `~/.tmux.conf` file:
+
+还可以使用 v 键选择文本，用 y 键复制文本。为此只需要将下面的配置项加入到 配置文件`~/.tmux.conf` 中。
 
 ```
 # start selecting text typing 'v' key (once you are in copy mode)
@@ -365,13 +381,19 @@ bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
 
 ### Effective pair programming
 
+### 高效的结对编程
+
 You can share the address of a Tmux session with someone else, and that person can connect to the session via `SSH`. Since the connection runs over `SSH`, it will be very lightweight. For the user connecting to the remote Tmux session, it will feel as if the session is running locally, providing the internet connection is fast enough.
 
-over：建立在SSH
+你可以将 Tmux 会话的地址分享给别人，这样他们就可以通过 SSH 接入这个会话。由于会话是建立在 SSH 之上的，所以不会产生**额外的开销**。通过使用高速的网络，对于那些连接到远程会话上的用户而言，他们会觉得这个会话就是运行在本地的。
 
 #### Tmux with Tmate
 
+#### 在Tmux 中使用 Tmate
+
 Tmate is a tool that makes it very easy to create a Tmux session and share it with someone else over the internet. To share a new Tmux session using Tmate these are the steps you have to follow:
+
+Tmate 是一个工具，用于轻松创建 Tmux 会话并且还能通过互联网把该会话共享给其他人。要想使用 Tmate 共享 Tmux 会话，请按照以下步骤操作：
 
 * Install Homebrew:
 
@@ -401,7 +423,7 @@ $ tmate
 
 * Copy the SSH URL given by Tmate on the Tmux session. An example is showed in the following image (message at the bottom: “*[tmate] Remote session: ssh …*”):
 
-1. 从 Tmux 的会话中复制由 Tmate 产生的 SSH 的 URL。下图是一个例子，请注意屏幕下方的信息“[tmate] Remote session: ssh …”：
+1. 从 Tmux 的会话中复制由 Tmate 产生的 SSH 的 URL。如下图所示，请注意屏幕下方的信息“[tmate] Remote session: ssh …”：
 
 ![image6](http://tangosource.com/wp-content/uploads/2015/05/image6.png)
 
@@ -410,16 +432,26 @@ $ tmate
 1. 利用刚刚复制下来的 URL 就可以邀请其他人通过 SSH 访问你的会话。
 
 Now that you know how to make good use of Tmux’s pair programming feature, you can further improve the interactivity of your session by doing a voice call via your preferred provider.
+
+既然已经了解了如何使用 Tmux 的结对编程功能带来**成功**，下面就可以通过使用喜爱的运营商提供的服务进一步加强在会话中的交互。
  
 ## ~ Tweaks for Vim integration
 
+## 调整 Tmux 以增强其同 Vim 的集成度
+
 ### Colorscheme background
+
+### 修改背景的配色方案
 
 When I first opened Vim through Tmux I found the colors weren’t being correctly applied. The background color was being displayed only where characters appeared. Here is an example:
 
+当我第一次通过Tmux打开Vim时，我发现Vim的颜色没有正确显示。正如下图所示，只有有字符的地方才有背景色。
+
 ![image7](http://tangosource.com/wp-content/uploads/2015/05/image7.png)
 
-This issue is due to Vim’s need of setting a different term parameter when ran through Tmux. To set the right term parameter just add the following lines to your *~/.vimrc* file:
+This issue is due to Vim’s need of setting a different term parameter when ran through Tmux. To set the right term parameter just add the following lines to your `~/.vimrc` file:
+
+这个问题是由于当通过 Tmux 运行了 Vim 以后，Vim 需要设置一个不同的 term 参数。为了设置正确的 term 参数，只需要将以下这行配置加入到VIM的配置文件 `~/.vimrc` 中。
 
 ```
 if exists('$TMUX')
@@ -429,11 +461,17 @@ endif
 
 After updating the ~/.vimrc file, the color scheme is displayed correctly:
 
+在更新了配置文件~/.vimrc以后，颜色就可以正确显示了。
+
 ![image8](http://tangosource.com/wp-content/uploads/2015/05/image8.png)
 
 ### Static cursor shape
 
+### 固定光标的形状
+
 By default when Vim is run through Tmux, the cursor shape is always the same regardless of the current Vim mode (insert, visual, etc). This makes it hard to identify the current Vim mode. To fix this, you need Tmux to tell iTerm to update the cursor shape. You can do it by adding the following to your ~/.vimrc file:
+
+在默认情况下，当通过 Tmux 运行 Vim 时，无论当前的Vim模式是插入模式、可视模式还是其他模式，光标的形状都不会变化。这样就很难判断出当前的Vim模式。要想填补这个缺陷，就需要告诉让Tmux告诉iTerm更新光标的形状。为此，可以将以下配置加入到文件~/.vimrc中。
 
 ```
 if exists('$ITERM_PROFILE')
@@ -453,7 +491,11 @@ end
 
 ### Indentation at pasting
 
+### 粘贴时的缩进
+
 Sometimes, when pasting text into Vim the indentation of the text is changed, which is a problem when you paste a large amount of text. This issue can be prevented by executing `:set nopaste` before pasting. However, there is a better way to do this. By adding the following to your `~/.vimrc` file, Vim will automatically prevent auto-indenting the text when pasting:
+
+有时将文本粘贴到 Vim 中时，文本的缩进会发生变化，特别是若要粘贴大量的文本的话，这就成了个问题。这个问题可以通过在粘贴前执行 `:set nopaste` 来避免。但是还有一种更好的解决方式。可以把下面这段配置加入到配置文件 `~/.vimrc` 中，这样 Vim 就会自动地阻止粘贴文本时的自动缩进。
 
 ```
 " for tmux to automatically set paste and nopaste mode at the time pasting (as
@@ -488,12 +530,20 @@ inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
  
 ## ~ Nice extras
 
+## 其他能够提升 Tmux 体验的工具或技巧
+
 ### Tmuxinator (automate sessions for your projects)
+
+### Tmuxinator （为项目自动创建会话）
 
 Let’s say you start coding for application A and you always create a Tmux session with three windows for that: “servers”, “editor” (for the project’s code) and “shell” (to run system commands). At certain point of the day you need to temporarily switch to application B, and you will create a Tmux session with the same windows arrangement you had for application A, with a few slight differences (such as the directory and some commands). With Tmuxinator, you can declare the configuration for each Tmux session and then create them with a single command! Pretty sweet.
 
+假设你开始为应用程序A编码，并且经常要创建一个带有以下3个窗口的 Tmux 会话，这3个窗口是“server”、“editor”（用于编写项目的代码）和“shell”（用于运行系统命令）。而且，在一天之中的某个固定时间你需要临时切换到应用程序B。于是你又需要创建一个会话，虽然有略微的不同（比如目录和某些命令），但是会话中还是要包含应用程序A中的那些窗口。有了 Tmuxinator，就可以为每个Tmux 会话声明一个配置，然后就可以用1条命令创建出这个会话了。这功能太棒了。
+
 Tmuxinator is a gem that allows you to automate the creation of Tmux sessions. It is done specifying the details of the sessions in the configuration files and then creating the sessions with a command.
 Let’s see how to install Tmuxinator and how to add the configuration to start a project session. Install the Tmuxinator gem by running the following command:
+
+Tmuxinator 是一个允许你自动创建 Tmux 会话的gem。它的工作方式是在配置文件中指定会话的细节，然后用1条命令创建这些会话。下面就让我们看看如何安装Tmuxinator以及如何添加配置以开启一个会话。可以通过运行如下命令安装Tmuxinator gem 。
 
 ```
 $ gem install tmuxinator
@@ -501,11 +551,15 @@ $ gem install tmuxinator
 
 Now that Tmuxinator is installed you can run the tmuxinator or mux commands from the system’s shell. Let’s create the configuration file for your first application as described above (three windows: “servers”, “editor” and “shell”), tell Tmuxinator to create and open the config file for this project:
 
+安装好了 Tmuxinator 后，就可以在系统 Shell 中运行 tmuxinator 或 mux命令了。下面就让我们为上述的应用程序（有3个窗口，“servers”, “editor” 和 “shell”）创建一个配置文件吧。下面这条命令的作用是为这个项目创建并打开一个配置文件。
+
 ```
 $ tmuxinator new project_a
 ```
 
 At this point the file `~/.tmuxinator/project_a.yml` should have been automatically opened. In order to accomplish what is needed for project A you need to update the content of project_a.yml to:
+
+按下回车键后，就会自动打开文件`~/.tmuxinator/project_a.yml`。为了完成项目A所需的配置，你需要把project_a.yml的内容更新为：
 
 ```
 name: project_a
@@ -525,11 +579,15 @@ windows:
 
 Once you have added the configuration to the Yaml file for project A, just run the following command to start the Tmux session:
 
+一旦将配置添加到项目A的Yaml文件中以后，只需要运行下面这条命令就可以启动Tmux的会话了。
+
 ```
 $ tmuxinator start project_a
 ```
 
 Or, if you prefer, use the Tmuxinator alias:
+
+或者，如果愿意的话，你也可以使用Tmuxinator的别名：
 
 ```
 $ mux start project_a
@@ -537,19 +595,31 @@ $ mux start project_a
 
 There you have it. Now, in order to start coding for project A just run the Tmuxinator command.
 
+大功告成了。现在，要想开始项目A的编码工作，只需要运行Tmuxinator命令。
+
 *Find the official documentation in the [Tmuxinator repo](https://github.com/tmuxinator/tmuxinator).
+
+可以到[这里](https://github.com/tmuxinator/tmuxinator)查看Tmuxinator的官方文档。
 
 ### Pimp your Tmux bar
 
+### 美化 Tmux 的状态栏
+
 By default, the Tmux bar looks like the following (green bar at the bottom of the image):
+
+默认情况下，Tmux的状态栏看起来是下图这个样子：
 
 ![image9](http://tangosource.com/wp-content/uploads/2015/05/image9.png)
 
 You can change its appearance if you want. In my case I like something cleaner as in:
 
+你可以根据需要改变状态栏的外观。对我来说，我喜欢下图这种清爽的外观。
+
 ![image10](http://tangosource.com/wp-content/uploads/2015/05/image10.png)
 
-In order to accomplish it, I use the following settings in my ~/.tmux.conf file:
+In order to accomplish it, I use the following settings in my `~/.tmux.conf` file:
+
+为了达到上图的效果，我将如下的配置加入到了配置文件 ~/.tmux.conf中。
 
 ```
 # Status bar
@@ -579,6 +649,10 @@ In order to accomplish it, I use the following settings in my ~/.tmux.conf file:
 
 In summary, we revised basic functionality and the most useful features Tmux offers. We also reviewed a few tweaks and extras. What are your impressions about Tmux so far? Are there any other features/tweaks that you have found useful? Let us know in the comments section below.
 
+总的来说，在这篇文章中我们先复习了Tmux的基本功能以及Tmux中最棒的功能。然后复习了一些配置以及其他能够提升 Tmux 体验的工具。诸位对 Tmux 的印象如何？找到了什么其他有用的功能或配置？请留言告诉我们吧。
+
 Thanks for reading!
 
-TN.
+感谢您阅读本文！
+
+TN.（应该是作者的名字吧）
