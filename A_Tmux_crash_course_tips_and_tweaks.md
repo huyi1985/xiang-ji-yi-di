@@ -13,47 +13,47 @@
 
 ## ~ 简介
 
-If you are one of those devs who uses the terminal a lot and ends up with way too many tabs open, or practices pair programming, then this post is for you. // During the last months, I’ve started using Tmux a lot. Since I’ve found it to be very useful, I thought I would write a post where I share a few recommendations and pro-tips. // I’ll show you what Tmux is and how to use it in combination with Vim to make a more effective and elegant use of the Terminal.
+If you are one of those devs who uses the terminal a lot and ends up with way too many tabs open, or practices pair programming, then this post is for you. During the last months, I’ve started using Tmux a lot. Since I’ve found it to be very useful, I thought I would write a post where I share a few recommendations and pro-tips. I’ll show you what Tmux is and how to use it in combination with Vim to make a more effective and elegant use of the Terminal.
 
-有些开发者经常要使用终端软件，导致最终打开了过多的标签页。如果你是他们当中的一员，或者你正在实践结对编程，那么我推荐你读一读这篇文章。从上个月开始，我开始大量使用 Tmux 并且发现 Tmux 非常实用，所以我想我应该写一篇文章，与诸位分享一些使用 Tmux 的建议和**专业方案**。本文将会讲解 Tmux 是什么以及如何使用 Tmux，才能使其同 Vim 结合起来，打造出更高效、更优雅的终端。
+有些开发者经常要使用终端工作，导致最终打开了过多的标签页。如果你也是他们当中的一员，或者你正在实践结对编程，那么我推荐你读一读这篇文章。从上个月开始，我开始大量使用 Tmux 并且发现 Tmux 非常实用，所以我想应该写一篇文章，与诸位分享一些有关使用 Tmux 的建议和专业方案。本文将先介绍 Tmux 是什么，然后讲解如何使用 Tmux，才能使其同 Vim 结合起来，打造出更高效、更优雅的终端。
 
 So, this is what we’ll cover:
 
-本文将会包含如下内容：
+本文将会包含以下内容：
 
-1. Tmux basics.
-1. The best of Tmux
-	1. Windows
-	1. Panes
-	1. Sessions
-	1. Fast text navigation and copying
-	1. And a very neat pair programming feature
-1. Tweaks to improve Vim integration.
-	1. Colorscheme background
-	1. Static cursor shape
-	1. Indentation at pasting
-1. A few extras to enhance the Tmux experience.
-	1. Tmuxinator for session automation.
-	1. Changing your color of your Tmux bar.
-	
+* Tmux basics.
+* The best of Tmux
+	* Windows
+	* Panes
+	* Sessions
+	* Fast text navigation and copying
+	* And a very neat pair programming feature
+* Tweaks to improve Vim integration.
+	* Colorscheme background
+	* Static cursor shape
+	* Indentation at pasting
+* A few extras to enhance the Tmux experience.
+	* Tmuxinator for session automation.
+	* Changing your color of your Tmux bar.
+
 1. Tmux 的基础
-1. Tmux 最棒的功能
+1. Tmux 中最棒的功能
 	1. 窗口（Window）
 	1. 窗格（Pane）
 	1. 会话（Session）
-	1. 可以快速地在文本间移动光标或复制文本
-	1. 提供了非常轻巧的结对编程功能
+	1. 快速在文本间移动光标或复制文本
+	1. 非常**轻巧**的结对编程功能
 1. 调整 Tmux 以增强其同 Vim 的集成度
-	1. 修改背景的配色方案
-	1. **固定**光标的形状
-	1. 粘贴时禁止缩进
+	1. 背景的配色方案
+	1. **固定的**光标形状
+	1. 粘贴时的文本缩进
 1. 其他能够提升 Tmux 体验的工具或技巧
 	1. 用 Tmuxinator 自动创建会话
 	1. 改变 Tmux 状态栏的颜色
  
 An important thing to bear in mind, this is the tool stack I had installed while writing this post, I tested what I say here with these versions:
 
-请注意，在撰写本文的过程中，我安装了以下这些软件，并在这些版本上进行了测试：
+请注意，在撰写本文的过程中，我安装了以下这一组软件，并在测试时使用了这些版本：
 
 - Tmux 1.9a
 - Vim 7.4
@@ -74,17 +74,17 @@ Let’s start!
 
 Tmux is a tool that allows running multiple terminal sessions through a single terminal window. It allows you to have terminal sessions running in the background and attach and detach from them as needed, which is very useful. Later on, we will see how to make the most out of that feature.
 
-Tmux 是一个工具，它允许在一个终端窗口中运行多个终端会话，并且允许用户将终端会话运行于后台或是按需接入、断开会话，这个功能非常实用。稍后，我们将会看到如何最大限度地利用这个功能。
+Tmux 是一个工具，用于在一个终端窗口中运行多个终端会话。不仅如此，你还可以通过 Tmux 使终端会话运行于后台或是按需接入、断开会话，这个功能非常实用。稍后，我们将会看到如何最大限度地利用这个功能。
 
 Here’s a screenshot of a Tmux session:
 
-下图所示的就是 Tmux 的会话：
+如图所示，这就一个是 Tmux 的会话：
 
 ![image1](http://tangosource.com/wp-content/uploads/2015/05/image1.png)
 
 What you see in the image:
 
-从图中可以看出：
+从图中我们可以看出：
 
 - Left: Vim
 - Right: a system’s shell
@@ -114,7 +114,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 ```
 [Here’s](https://raw.githubusercontent.com/Homebrew/install/master/install) more info.
 
-有关安装 homebrew 的更详细的信息可以参考[这里](https://raw.githubusercontent.com/Homebrew/install/master/install)。
+有关安装 homebrew 的详细的信息可以参考[这里](https://raw.githubusercontent.com/Homebrew/install/master/install)。
 
 * Install Tmux:
 2. 安装 Tmux
@@ -139,32 +139,32 @@ $ sudo apt-get install tmux
 
 ### Tmux 的快捷键前缀（Prefix）
 
-In order to isolate its own keyboard shortcuts from other shortcuts, Tmux provides a shortcut prefix. // When you want to trigger a Tmux shortcut you will press the Tmux prefix and then the Tmux shortcut key. // The prefix that Tmux uses by default is Ctrl-b (“Ctrl” key in combination with the “b” key). For instance, let’s say you want to trigger the shortcut that lists the current Tmux sessions, which is the ｀s｀ key. Here is what you will need to do:
+In order to isolate its own keyboard shortcuts from other shortcuts, Tmux provides a shortcut prefix. When you want to trigger a Tmux shortcut you will press the Tmux prefix and then the Tmux shortcut key. The prefix that Tmux uses by default is Ctrl-b (“Ctrl” key in combination with the “b” key). For instance, let’s say you want to trigger the shortcut that lists the current Tmux sessions, which is the ｀s｀ key. Here is what you will need to do:
 
-为了使 Tmux 和其他软件的快捷键互不干扰，Tmux 提供了一个快捷键前缀。当想要使用快捷键时，你需要先按下快捷键前缀，然后再按下快捷键。Tmux 所使用的快捷键前缀默认是组合键 `Ctrl-b`（同时按下 Ctrl 键和 B 键）。例如，假如你想通过快捷键列出当前 Tmux 中的会话（对应的快捷键是 s），那么你只需要：
+为了使自身的快捷键和其他软件的快捷键互不干扰，Tmux 提供了一个快捷键前缀。当想要使用快捷键时，需要先按下快捷键前缀，然后再按下快捷键。Tmux 所使用的快捷键前缀默认是组合键 `Ctrl-b`（同时按下 `Ctrl` 键和 `b` 键）。例如，假如你想通过快捷键列出当前 Tmux 中的会话（对应的快捷键是 s），那么你只需要做以下几步：
 
 * Press Ctrl-b keys (Tmux prefix)
 * Release Ctrl-b keys
 * Press the s key
 
-1. 按下组合键 `Ctrl-b` (Tmux 快捷键的前缀)
+1. 按下组合键 `Ctrl-b` (Tmux 快捷键前缀)
 1. 放开组合键 `Ctrl-b` 
-1. 按下 `S` 键
+1. 按下 `s` 键
  
 A few recommendations:
 这里有一些小建议：
 
-If you have not already mapped the ｀ctrl｀ key to the ｀caps-lock｀ key and vice-versa I suggest you do it.
+If you have not already mapped the `ctrl` key to the `caps-lock` key and vice-versa I suggest you do it.
 
-首先我建议对调｀Ctrl｀ 键和｀Caps-Lock｀ 键的功能。
+首先我建议对调 `Ctrl` 键和 `Caps-Lock` 键的功能。
 
 Calling ctrl from the caps-lock key is very practical. This is because when coding you need to call ctrl very frequently. Moreover, it is a lot easier/quicker given the caps-lock key aligns with the default position of your fingers in the keyboard.
 
-使用｀Caps-Lock｀ 键代替 ｀Ctrl｀ 键将会非常实用。因为在编码过程中，会频繁地按下｀Ctrl｀ 键，而｀Caps-Lock｀ 与手指在键盘的起始位置在同一直线上，所以按下｀Caps-Lock｀ 键会更加容易、便捷。
+通过按下 `Caps-Lock` 键来代替 `Ctrl` 键将会非常实用。因为在编码过程中，你需要频繁地按下 `Ctrl` 键，而由于 `Caps-Lock` 与手指在键盘的起始位置处于同一直线，所以按下 `Caps-Lock` 键会更加容易、便捷。
  
 I recommend changing the Tmux prefix to Ctrl-a . Once the `Ctrl` key has been set to the `Caps-Lock` key, it gets a lot easier/quicker to call Ctrl-a instead of Ctrl-b, because the new prefix keys are very close to each other on the keyboard.
 
-其次，我建议将 Tmux 的快捷键前缀变为 `Ctrl - a`。一旦用`Caps-Lock`键充当 `Ctrl` 键，那么使用`Ctrl - a`将比`Ctrl - b`更容易、便捷。
+其次，我建议将 Tmux 的快捷键前缀变为 `Ctrl - a`。用 `Caps-Lock` 键替代了 `Ctrl` 键之后，由于 `Caps-Lock` 键与 `a` 键离得更近，所以按下 `Ctrl - a` 就将会比按下 `Ctrl - b` 更容易、更便捷。
 
 Here is what you need to add in your ~/.tmux.conf file to change the prefix to Ctrl-a:
 
@@ -181,9 +181,9 @@ set -g prefix C-a
 
 `~/.tmux.conf` is a file that Tmux reads every time a new session opens. It’s where the customizations for Tmux need to be placed. // Suggestion: in the case that you need (**and chances are you will**) to apply a new change made to the without opening a new session, you can add the following line to the ~/.tmux.conf file:
 
-每当开启一个新的会话时，Tmux 都会读取 `~/.tmux.conf` 这个文件。对 Tmux 的配置就需要写入这个文件。
+每当开启一个新的会话时，Tmux 都会去读取 `~/.tmux.conf` 这个文件。所以我们需要将对 Tmux 的配置写到这个文件中。
 
-小提示：如果你不希望直到开启一个新的会话，一个新的配置项才能生效，那么你可以将下面这一行加入到 `~/.tmux.conf` 文件中。
+小提示：如果你不希望直到开启一个新的会话时，一个新的配置项才能生效，那么你可以将下面这一行加入到配置文件 `~/.tmux.conf` 中。
 
 ```
 # bind a reload key
@@ -242,7 +242,7 @@ The list of existent windows in a Tmux session displays at the bottom of the scr
 
 In order to create a new window you need to press `Ctrl-b c`. To navigate through windows press `Ctrl-b` followed by the index number of the window you want to go. The index number displays next to the name.
 
-要想创建一个窗口，只需要按下`Ctrl-b c`；要想切换窗口，只需要先按下`Ctrl-b` 然后再按下想切换到的窗口对应的数字，这个数字会紧挨着窗口的名字显示。
+若要创建一个窗口，只需要按下`Ctrl-b c`；若要切换窗口，只需要先按下`Ctrl-b` 然后再按下想切换到的窗口对应的数字，这个数字会紧挨着窗口的名字显示。
 
 ### Sessions
 
@@ -250,7 +250,7 @@ In order to create a new window you need to press `Ctrl-b c`. To navigate throug
 
 A Tmux session can contain multiple windows. Sessions are a neat feature; I can create a Tmux session that is **exclusive to** a particular project. To create a new session just run the following command on your terminal:
 
-一个Tmux会话中可以包含多个窗口。会话是一个**精简**的功能，例如可以为一个特定的项目创建一个Tmux会话。要想创建一个新的会话，只需要在终端运行如下的命令：
+一个Tmux会话中可以包含多个窗口。会话是一个**精简**的功能，例如可以为一个特定的项目创建一个Tmux会话。若要创建一个新的会话，只需要在终端运行如下的命令：
 
 ```
 $ tmux new -s <name-of-my-session>
@@ -258,7 +258,7 @@ $ tmux new -s <name-of-my-session>
 
 If I need to work on a different project I will just create a new session for that. Although the focus will be on the new session, the original session will remain alive. This allows me to get back to it later, and continue where I left off. To create a new session press `Ctrl-b :` and then enter the following command:
 
-如果我需要进行另一个不同的项目，那么我将会为此再新建一个会话。虽然进入了新的会话，但是原来的会话并没有消失。这就允许我在稍后会到之前的会话继续工作。要想创建一个新的会话，只需要按下 `Ctrl-b :` ，然后输入如下的命令：
+如果我需要进行另一个不同的项目，那么我将会为此再新建一个会话。虽然进入了新的会话，但是原来的会话并没有消失。这就允许我在稍后会到之前的会话继续工作。若要创建一个新的会话，只需要按下 `Ctrl-b :` ，然后输入如下的命令：
 
 ```
 new -s <name-of-my-new-session>
@@ -274,7 +274,7 @@ Tmux sessions remain alive until you restart your machine or you explicitly kill
 
 To get a list of the existing sessions, press `Ctrl-b s`. Here is an example of what Tmux will show you:
 
-要想获取已有会话的列表，可以按下`Ctrl-b s`。下图就是会话列表的例子：
+若要获取已有会话的列表，可以按下`Ctrl-b s`。下图就是会话列表的例子：
 
 ![image4](http://tangosource.com/wp-content/uploads/2015/05/image4.png)
 
@@ -393,7 +393,7 @@ You can share the address of a Tmux session with someone else, and that person c
 
 Tmate is a tool that makes it very easy to create a Tmux session and share it with someone else over the internet. To share a new Tmux session using Tmate these are the steps you have to follow:
 
-Tmate 是一个工具，用于轻松创建 Tmux 会话并且还能通过互联网把该会话共享给其他人。要想使用 Tmate 共享 Tmux 会话，请按照以下步骤操作：
+Tmate 是一个工具，用于轻松创建 Tmux 会话并且还能通过互联网把该会话共享给其他人。若要使用 Tmate 共享 Tmux 会话，请按照以下步骤操作：
 
 * Install Homebrew:
 
@@ -471,7 +471,7 @@ After updating the ~/.vimrc file, the color scheme is displayed correctly:
 
 By default when Vim is run through Tmux, the cursor shape is always the same regardless of the current Vim mode (insert, visual, etc). This makes it hard to identify the current Vim mode. To fix this, you need Tmux to tell iTerm to update the cursor shape. You can do it by adding the following to your ~/.vimrc file:
 
-在默认情况下，当通过 Tmux 运行 Vim 时，无论当前的Vim模式是插入模式、可视模式还是其他模式，光标的形状都不会变化。这样就很难判断出当前的Vim模式。要想填补这个缺陷，就需要告诉让Tmux告诉iTerm更新光标的形状。为此，可以将以下配置加入到文件~/.vimrc中。
+在默认情况下，当通过 Tmux 运行 Vim 时，无论当前的Vim模式是插入模式、可视模式还是其他模式，光标的形状都不会变化。这样就很难判断出当前的Vim模式。若要填补这个缺陷，就需要告诉让Tmux告诉iTerm更新光标的形状。为此，可以将以下配置加入到文件~/.vimrc中。
 
 ```
 if exists('$ITERM_PROFILE')
@@ -595,7 +595,7 @@ $ mux start project_a
 
 There you have it. Now, in order to start coding for project A just run the Tmuxinator command.
 
-大功告成了。现在，要想开始项目A的编码工作，只需要运行Tmuxinator命令。
+大功告成了。现在，若要开始项目A的编码工作，只需要运行Tmuxinator命令。
 
 *Find the official documentation in the [Tmuxinator repo](https://github.com/tmuxinator/tmuxinator).
 
