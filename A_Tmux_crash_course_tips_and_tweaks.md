@@ -1,6 +1,6 @@
 主要介绍了*nix平台上文本三剑客zsh, tmux和vim中其中Tmux和vim的技巧和集成知识。【网路冷眼】推荐 **[阅读原文 »](http://tangosource.com/blog/a-tmux-crash-course-tips-and-tweaks/)**
 
--------------------
+----------------------
 
 # A Tmux crash course: tips and tweaks.
 
